@@ -1,5 +1,4 @@
 import numpy as np
-from pprint import pprint
 
 
 class Lamina:
@@ -17,9 +16,7 @@ class Lamina:
             t: Ply Thickness (m)
         """
 
-        # MATERIAL PROPERTIES
-        self.th = np.radians(th)  # angle of fibres (degrees,
-        # converted to radians for internal maths)
+        self.th = np.radians(th)  # angle of fibres (degrees, converted to radians for internal maths)
         self.m = np.cos(self.th)
         self.n = np.sin(self.th)
         self.E1 = E1  # E along fibres
@@ -106,48 +103,46 @@ class Laminate:
         Ms: float = 0,
     ):
         """
-        Initialize a laminate with the given parameters.
+        Initialize a laminate with given properties and calculate the A, B, D matrices.
 
         Args:
             plies: Tuple of Lamina objects.
-            Nx: Normal force applied in the global x direction (N).
-            Ny: Normal force applied in the global y direction (N).
-            Ns: Global shear force (N).
-            Mx: Moment applied around the global x-axis (Nm).
-            My: Moment applied around the global y-axis (Nm).
-            Ms: Moment applied around the global shear axis (Nm).
+            Nx, Ny, Ns: Normal and shear forces in the x, y, and shear directions (N).
+            Mx, My, Ms: Moments around the x, y, and shear axes (Nm).
         """
         self.plies = plies
         self.load = np.array([Nx, Ny, Ns, Mx, My, Ms])
-        self.z = np.zeros(len(plies) + 1)
 
-        # Define the z-positions of the laminae, datum at the bottom
-        for i, ply in enumerate(plies):
-            self.z[i + 1] = (i + 1) * ply.t
+        # Calculate z positions of ply boundaries and midplanes
+        self.calculate_z_positions()
 
-        # Shift z-positions to have the datum at the midplane of the laminate
-        self.z -= np.mean(self.z)
-
-        # Calculate midplane z-coordinates for each lamina
-        self.z_lamina_midplane = 0.5 * (self.z[1:] + self.z[:-1])
-
-        # Initialize A, B, D matrices
+        # Initialize and calculate A, B, D matrices, then assemble ABD
         self.A = np.zeros((3, 3))
         self.B = np.zeros((3, 3))
         self.D = np.zeros((3, 3))
+        self.calculate_abd_matrices()
 
-        # Compute A, B, D matrices
-        for i, ply in enumerate(plies):
-            delta_z = self.z[i + 1] - self.z[i]
-            delta_z2 = self.z[i + 1] ** 2 - self.z[i] ** 2
-            delta_z3 = self.z[i + 1] ** 3 - self.z[i] ** 3
+    def calculate_z_positions(self):
+        """Calculate the boundary and midplane z-positions for each ply."""
+        ply_thickness = np.array([ply.t for ply in self.plies])
+        self.z = np.cumsum(np.insert(ply_thickness, 0, 0))
+        self.z -= np.mean(self.z)  # Center around the laminate midplane
+        self.z_lamina_midplane = self.z[:-1] + 0.5 * ply_thickness
+
+    def calculate_abd_matrices(self):
+        """Calculate the A, B, and D matrices for the laminate and assemble ABD."""
+        for i, ply in enumerate(self.plies):
+            bottom_z, top_z = self.z[i], self.z[i + 1]
+            delta_z = top_z - bottom_z
+            delta_z2 = top_z ** 2 - bottom_z ** 2
+            delta_z3 = top_z ** 3 - bottom_z ** 3
 
             self.A += ply.Qbarmat * delta_z
             self.B += 0.5 * ply.Qbarmat * delta_z2
             self.D += (1 / 3) * ply.Qbarmat * delta_z3
 
-        # Assemble ABD matrix and compute its inverse
-        # Suppress Pycharm warning because it works fine and Pycharm is being silly (I think)
+        # Assemble the ABD matrix and compute its inverse
+        # Suppress PyCharm warning about PyTypeChecker as it should work fine
         # noinspection PyTypeChecker
         self.ABD = np.block([[self.A, self.B], [self.B.T, self.D]])
         self.abd = np.linalg.inv(self.ABD)
@@ -155,7 +150,6 @@ class Laminate:
     def get_stress_strain(self):
         # Compute global strain (laminate level) on the mid-plane
         strain_midplane = np.linalg.solve(self.ABD, self.load)
-        print(strain_midplane)
 
         strains = []
         stresses = []
@@ -178,5 +172,5 @@ if __name__ == "__main__":
     l4 = Lamina(90, 200e9, 50e9, 100e6, 0.4, 0.1e-3)
     l5 = Lamina(0, 200e9, 50e9, 100e6, 0.4, 0.1e-3)
 
-    L2 = Laminate(plies=(l1, l2, l3), Nx=1)
+    L2 = Laminate(plies=(l1, l2, l3), Nx=1E6)
     L2.get_stress_strain()
