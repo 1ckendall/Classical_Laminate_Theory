@@ -1,7 +1,7 @@
 import numpy as np
 from abc import ABC, abstractmethod
-import seaborn as sns
 import matplotlib.pyplot as plt
+import seaborn as sns
 from typing import Annotated
 
 
@@ -97,9 +97,17 @@ class Lamina:
                 [self.Qxs, self.Qys, self.Qss],
             ]
         )
+        # Transformation matrix for stresses and strains
+        self.global_local_transform = np.array(
+            [
+                [self.m**2, self.n**2, 2 * self.m * self.n],
+                [self.n**2, self.m**2, -2 * self.m * self.n],
+                [-self.m * self.n, self.m * self.n, self.m**2 - self.n**2],
+            ]
+        )
 
     @abstractmethod
-    def failure(self, stress, strain):
+    def failure(self, local_stress, local_strain):
         return False
 
 
@@ -156,21 +164,35 @@ class PuckLamina(Lamina):
     ):
         super().__init__(angle, E1, E2, G12, v12, t)
 
+    def failure(self, stress, strain):
+        pass
+
 
 class Laminate:
-    def __init__(self, plies: tuple[Lamina,...], load: Annotated[np.ndarray, (6,)]):
+    def __init__(self, plies: tuple[Lamina, ...], load: Annotated[np.ndarray, (6,)]):
+        # Ply properties
         self.plies = plies
         self.n = len(plies)
+        self.lamina_boundaries = np.zeros(len(self.plies) + 1)
+        self.lamina_midplanes = np.zeros(len(self.plies))
+        self.get_z_positions()
+        self.Qbar_matrices = np.array([ply.Qbarmat for ply in self.plies])
+        self.T_matrices = np.array([ply.global_local_transform for ply in self.plies])
+
+        # ABD properties
         self.A = np.zeros((3, 3))
         self.B = np.zeros((3, 3))
         self.D = np.zeros((3, 3))
         self.ABD = np.zeros((6, 6))
         self.abd = np.zeros((6, 6))
-        self.load = load
-        self.stresses = np.zeros([len(plies), 3])
-        self.strains = np.zeros([len(plies), 3])
-        self.get_z_positions()
         self.get_abd_matrices()
+
+        # Loading properties
+        self.load = load
+        self.global_stresses = np.zeros([len(plies), 3])
+        self.global_strains = np.zeros([len(plies), 3])
+        self.local_stresses = np.zeros([len(plies), 3])
+        self.local_strains = np.zeros([len(plies), 3])
         self.get_stress_strain()
 
     def get_z_positions(self):
@@ -202,68 +224,107 @@ class Laminate:
             raise ValueError("ABD matrix is singular; check input properties.")
 
     def get_stress_strain(self):
-        """Compute laminate strains and stresses for each ply more efficiently."""
+        """Compute laminate strains and stresses for each ply in the global and local coordinate systems."""
         strain_midplane = np.linalg.solve(self.ABD, self.load)
-        self.strains = (
-            strain_midplane[:3] + np.outer(self.lamina_midplanes, strain_midplane[3:])
+        # Compute global strains and stresses
+        self.global_strains = (
+            strain_midplane[:3] + self.lamina_midplanes[:, None] * strain_midplane[3:]
         )
-        self.stresses = np.einsum("ijk,ik->ij", np.array([ply.Qbarmat for ply in self.plies]), self.strains)
+        self.global_stresses = np.einsum(
+            "nij,nj->ni", self.Qbar_matrices, self.global_strains
+        )
+        # Compute local strains and stresses
+        self.local_strains = np.einsum(
+            "nij,nj->ni", self.T_matrices, self.global_strains
+        )
+        self.local_stresses = np.einsum(
+            "nij,nj->ni", self.T_matrices, self.global_stresses
+        )
 
-    def update_load(self, Nx=0, Ny=0, Ns=0, Mx=0, My=0, Ms=0):
+    def update_load(self, load):
         """Update the applied load and recompute stress/strain, with error handling."""
         try:
-            self.load = np.array([Nx, Ny, Ns, Mx, My, Ms], dtype=float)
+            self.load = load
             self.get_stress_strain()
         except ValueError as e:
             raise ValueError("Invalid load values or singular ABD matrix.") from e
 
     def _plot_distribution(self, values, labels, title):
-        """General function to plot stress/strain distributions."""
+        """General function to plot stress/strain distributions with improved formatting."""
+        sns.set_style("darkgrid")  # Apply seaborn styling
+        sns.set_palette("deep")  # Use a refined color palette
+
         z_bounds = self.lamina_boundaries
-        colors = ["b", "r", "g"]
-        fig, axes = plt.subplots(1, 3, figsize=(15, 6), sharey=True)
+        colors = sns.color_palette("deep", 3)  # Improved color selection
+
+        fig, axes = plt.subplots(1, 3, figsize=(15, 6), sharey=True, dpi=100)
 
         for i, ax in enumerate(axes):
             for j in range(len(self.plies)):
                 z_lower, z_upper = z_bounds[j], z_bounds[j + 1]
                 val_lower, val_upper = values[j, i], values[j, i]
-                ax.plot([val_lower, val_upper], [z_lower, z_upper], color=colors[i], linestyle="-")
+
+                ax.plot(
+                    [val_lower, val_upper],
+                    [z_lower, z_upper],
+                    color=colors[i],
+                    linestyle="-",
+                    linewidth=2,
+                )
+
                 if j < len(self.plies) - 1:
-                    ax.plot([val_upper, values[j + 1, i]], [z_upper, z_upper], color=colors[i], linestyle="-")
+                    ax.plot(
+                        [val_upper, values[j + 1, i]],
+                        [z_upper, z_upper],
+                        color=colors[i],
+                        linestyle="-",
+                        linewidth=2,
+                    )
 
-            ax.axvline(x=0, color="k", linestyle="--", alpha=0.5)
-            ax.set_xlabel(labels[i])
-            ax.grid(True)
+            ax.axvline(x=0, color="k", linestyle="--", alpha=0.5, linewidth=1.2)
+            ax.set_xlabel(labels[i], fontsize=12, fontweight="bold")
+            ax.grid(True, linestyle="--", alpha=0.6)
 
-        axes[0].set_ylabel("Laminate Thickness Position (m)")
-        fig.suptitle(title, fontsize=14)
-        plt.tight_layout()
+        axes[0].set_ylabel(
+            "Laminate Thickness Position (m)", fontsize=12, fontweight="bold"
+        )
+        fig.suptitle(title, fontsize=14, fontweight="bold")
+
+        plt.tight_layout(pad=2)
         plt.show()
 
     @property
-    def stress_graph(self):
+    def global_stress_graph(self):
         """Plot stress distribution through laminate thickness."""
         return self._plot_distribution(
-            self.stresses, [r"$\sigma_x$ (MPa)", r"$\sigma_y$ (MPa)", r"$\tau_{xy}$ (MPa)"], "Stress Distribution in the Laminate"
+            self.global_stresses,
+            [r"$\sigma_x$ (MPa)", r"$\sigma_y$ (MPa)", r"$\tau_{xy}$ (MPa)"],
+            "Global Stress Distribution in the Laminate",
         )
 
     @property
-    def strain_graph(self):
+    def global_strain_graph(self):
         """Plot strain distribution through laminate thickness."""
         return self._plot_distribution(
-            self.strains, [r"$\varepsilon_x$", r"$\varepsilon_y$", r"$\gamma_{xy}$"], "Strain Distribution in the Laminate"
+            self.global_strains,
+            [r"$\varepsilon_x$", r"$\varepsilon_y$", r"$\gamma_{xy}$"],
+            "Global Strain Distribution in the Laminate",
         )
 
+    @property
+    def local_stress_graph(self):
+        """Plot stress distribution through laminate thickness."""
+        return self._plot_distribution(
+            self.local_stresses,
+            [r"$\sigma_{11}$ (MPa)", r"$\sigma_{22}$ (MPa)", r"$\tau_{12}$ (MPa)"],
+            "Local Stress Distribution in the Laminate",
+        )
 
-if __name__ == "__main__":
-    l1 = Lamina(0, 200e9, 50e9, 100e6, 0.4, 0.1e-3)
-    l2 = Lamina(90, 200e9, 50e9, 100e6, 0.4, 0.1e-3)
-    l3 = Lamina(0, 200e9, 50e9, 100e6, 0.4, 0.1e-3)
-    l4 = Lamina(90, 200e9, 50e9, 100e6, 0.4, 0.1e-3)
-    l5 = Lamina(0, 200e9, 50e9, 100e6, 0.4, 0.1e-3)
-
-    L2 = Laminate(plies=(l1, l2, l3, l4, l5), Nx=1e6)
-    print(L2.stresses)
-    print()
-    print(L2.lamina_boundaries)
-    L2.stress_graph()
+    @property
+    def local_strain_graph(self):
+        """Plot strain distribution through laminate thickness."""
+        return self._plot_distribution(
+            self.local_stresses,
+            [r"$\varepsilon_{11}$", r"$\varepsilon_{22}$", r"$\gamma_{12}$"],
+            "Local Strain Distribution in the Laminate",
+        )
