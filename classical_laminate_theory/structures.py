@@ -170,6 +170,12 @@ class PuckLamina(Lamina):
 
 class Laminate:
     def __init__(self, plies: tuple[Lamina, ...], load: Annotated[np.ndarray, (6,)]):
+        """
+        A composite laminate comprising a layup of plies and under some loading
+        Args:
+            plies:
+            load: A 1-by 6 numpy array of [Nx, Ny, Nxy, Mx, My, Mxy]
+        """
         # Ply properties
         self.plies = plies
         self.n = len(plies)
@@ -298,7 +304,7 @@ class Laminate:
         """Plot stress distribution through laminate thickness."""
         return self._plot_distribution(
             self.global_stresses,
-            [r"$\sigma_x$ (MPa)", r"$\sigma_y$ (MPa)", r"$\tau_{xy}$ (MPa)"],
+            [r"$\sigma_{xx}$ (MPa)", r"$\sigma_{yy}$ (MPa)", r"$\tau_{xy}$ (MPa)"],
             "Global Stress Distribution in the Laminate",
         )
 
@@ -307,7 +313,7 @@ class Laminate:
         """Plot strain distribution through laminate thickness."""
         return self._plot_distribution(
             self.global_strains,
-            [r"$\varepsilon_x$", r"$\varepsilon_y$", r"$\gamma_{xy}$"],
+            [r"$\varepsilon_{xx}$", r"$\varepsilon_{yy}$", r"$\gamma_{xy}$"],
             "Global Strain Distribution in the Laminate",
         )
 
