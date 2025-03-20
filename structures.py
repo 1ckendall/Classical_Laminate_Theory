@@ -1,30 +1,42 @@
 import numpy as np
+from abc import ABC, abstractmethod
+import seaborn as sns
+import matplotlib.pyplot as plt
+from typing import Annotated
 
 
 class Lamina:
     """A single composite lamina. Base class for laminae."""
 
-    def __init__(self, th, E1, E2, G12, v12, t):
+    def __init__(
+        self,
+        angle: float,
+        E1: float,
+        E2: float,
+        G12: float,
+        v12: float,
+        t: float,
+    ):
         """
         Initialise a composite lamina with given properties.
         Args:
-            th: Angle of fibres (deg).
+            angle: Angle of fibres (deg).
             E1: E-modulus along the fibres (Pa)
             E2: E-modulus across the fibres (Pa)
             G12: Shear modulus (Pa)
             v12: Major Poisson ratio
             t: Ply Thickness (m)
         """
-
-        self.th = np.radians(th)  # angle of fibres (degrees, converted to radians for internal maths)
-        self.m = np.cos(self.th)
-        self.n = np.sin(self.th)
+        self.angle = np.radians(angle)  # angle of fibres
+        self.m = np.cos(self.angle)
+        self.n = np.sin(self.angle)
         self.E1 = E1  # E along fibres
         self.E2 = E2  # E across fibres
         self.G12 = G12  # Shear modulus
         self.v12 = v12  # Major Poisson
         self.v21 = self.v12 * self.E2 / self.E1  # Minor Poisson
         self.t = t  # Thickness
+        self.failed = False
 
         # Initialise reduced stiffness matrix Q parallel to the fibres of the lamina
         self.Q = 1 - (self.v12 * self.v21)
@@ -78,7 +90,6 @@ class Lamina:
             - 2 * self.m**2 * self.n**2 * self.Q12
             + (self.m**2 - self.n**2) ** 2 * self.Q66
         )
-
         self.Qbarmat = np.array(
             [
                 [self.Qxx, self.Qxy, self.Qxs],
@@ -87,82 +98,161 @@ class Lamina:
             ]
         )
 
-        # Initialise an empty failure mode
-        self.failure_mode = None
+    @abstractmethod
+    def failure(self, stress, strain):
+        return False
+
+
+class TsaiHillLamina(Lamina):
+    def __init__(
+        self,
+        angle: float,
+        E1: float,
+        E2: float,
+        G12: float,
+        v12: float,
+        t: float,
+        X11: float = 0,
+        X22: float = 0,
+        S12: float = 0,
+    ):
+        """
+        A lamina using the Tsai-Hill failure criterion
+        Args:
+            angle: Angle of fibres (deg).
+            E1: E-modulus along the fibres (Pa)
+            E2: E-modulus across the fibres (Pa)
+            G12: Shear modulus (Pa)
+            v12: Major Poisson ratio
+            t: Ply Thickness (m)
+            X11: Allowable strength of the ply in the longitudinal direction (0° direction)
+            X22: Allowable strength of the ply in the transversal direction (90° direction)
+            S12: Allowable in-plane shear strength of the ply between the longitudinal and the
+            transversal directions
+        """
+        super().__init__(angle, E1, E2, G12, v12, t)
+        self.X11 = X11
+        self.X22 = X22
+        self.S12 = S12
+
+    def failure(self, stress, strain):
+        criterion = (
+            (stress[0] / self.X11) ** 2
+            - (stress[0] * stress[1]) / (self.X11**2)
+            + (stress[1] / self.X22) ** 2
+            + (stress[2] / self.S12) ** 2
+        )
+        if criterion < 1:
+            return False
+        return True
+
+
+# PUCK, HASHIN, CHRISTENSEN, LARC05
+
+
+class PuckLamina(Lamina):
+    def __init__(
+        self, angle: float, E1: float, E2: float, G12: float, v12: float, t: float
+    ):
+        super().__init__(angle, E1, E2, G12, v12, t)
 
 
 class Laminate:
-    def __init__(
-        self,
-        plies: tuple[Lamina, ...],
-        Nx: float = 0,
-        Ny: float = 0,
-        Ns: float = 0,
-        Mx: float = 0,
-        My: float = 0,
-        Ms: float = 0,
-    ):
-        """
-        Initialize a laminate with given properties and calculate the A, B, D matrices.
-
-        Args:
-            plies: Tuple of Lamina objects.
-            Nx, Ny, Ns: Normal and shear forces in the x, y, and shear directions (N).
-            Mx, My, Ms: Moments around the x, y, and shear axes (Nm).
-        """
+    def __init__(self, plies: tuple[Lamina,...], load: Annotated[np.ndarray, (6,)]):
         self.plies = plies
-        self.load = np.array([Nx, Ny, Ns, Mx, My, Ms])
-
-        # Calculate z positions of ply boundaries and midplanes
-        self.calculate_z_positions()
-
-        # Initialize and calculate A, B, D matrices, then assemble ABD
+        self.n = len(plies)
         self.A = np.zeros((3, 3))
         self.B = np.zeros((3, 3))
         self.D = np.zeros((3, 3))
-        self.calculate_abd_matrices()
+        self.ABD = np.zeros((6, 6))
+        self.abd = np.zeros((6, 6))
+        self.load = load
+        self.stresses = np.zeros([len(plies), 3])
+        self.strains = np.zeros([len(plies), 3])
+        self.get_z_positions()
+        self.get_abd_matrices()
+        self.get_stress_strain()
 
-    def calculate_z_positions(self):
+    def get_z_positions(self):
         """Calculate the boundary and midplane z-positions for each ply."""
         ply_thickness = np.array([ply.t for ply in self.plies])
-        self.z = np.cumsum(np.insert(ply_thickness, 0, 0))
-        self.z -= np.mean(self.z)  # Center around the laminate midplane
-        self.z_lamina_midplane = self.z[:-1] + 0.5 * ply_thickness
+        z = np.hstack(([0], np.cumsum(ply_thickness)))
+        midplane_shift = 0.5 * (z[0] + z[-1])
+        self.lamina_boundaries = z - midplane_shift
+        self.lamina_midplanes = self.lamina_boundaries[:-1] + 0.5 * ply_thickness
 
-    def calculate_abd_matrices(self):
-        """Calculate the A, B, and D matrices for the laminate and assemble ABD."""
+    def get_abd_matrices(self):
+        """Efficiently compute A, B, and D matrices and assemble ABD."""
+        z_bounds = self.lamina_boundaries
         for i, ply in enumerate(self.plies):
-            bottom_z, top_z = self.z[i], self.z[i + 1]
-            delta_z = top_z - bottom_z
-            delta_z2 = top_z ** 2 - bottom_z ** 2
-            delta_z3 = top_z ** 3 - bottom_z ** 3
+            bottom_z, top_z = z_bounds[i], z_bounds[i + 1]
+            dz = top_z - bottom_z
+            dz2_half = (top_z**2 - bottom_z**2) / 2
+            dz3_third = (top_z**3 - bottom_z**3) / 3
 
-            self.A += ply.Qbarmat * delta_z
-            self.B += 0.5 * ply.Qbarmat * delta_z2
-            self.D += (1 / 3) * ply.Qbarmat * delta_z3
+            self.A += ply.Qbarmat * dz
+            self.B += ply.Qbarmat * dz2_half
+            self.D += ply.Qbarmat * dz3_third
 
-        # Assemble the ABD matrix and compute its inverse
-        # Suppress PyCharm warning about PyTypeChecker as it should work fine
-        # noinspection PyTypeChecker
         self.ABD = np.block([[self.A, self.B], [self.B.T, self.D]])
-        self.abd = np.linalg.inv(self.ABD)
+        det_abd = np.linalg.det(self.ABD)
+        if det_abd != 0:
+            self.abd = np.linalg.inv(self.ABD)
+        else:
+            raise ValueError("ABD matrix is singular; check input properties.")
 
     def get_stress_strain(self):
-        # Compute global strain (laminate level) on the mid-plane
+        """Compute laminate strains and stresses for each ply more efficiently."""
         strain_midplane = np.linalg.solve(self.ABD, self.load)
+        self.strains = (
+            strain_midplane[:3] + np.outer(self.lamina_midplanes, strain_midplane[3:])
+        )
+        self.stresses = np.einsum("ijk,ik->ij", np.array([ply.Qbarmat for ply in self.plies]), self.strains)
 
-        strains = []
-        stresses = []
-        # Compute local strain (lamina level)
-        for i, ply in enumerate(self.plies):
-            strain = (
-                strain_midplane[:3] + self.z_lamina_midplane[i] * strain_midplane[3:]
-            )
-            stress = ply.Qbarmat @ strain
-            strains.append(strain)
-            stresses.append(stress)
-        print(strains)
-        print(stresses)
+    def update_load(self, Nx=0, Ny=0, Ns=0, Mx=0, My=0, Ms=0):
+        """Update the applied load and recompute stress/strain, with error handling."""
+        try:
+            self.load = np.array([Nx, Ny, Ns, Mx, My, Ms], dtype=float)
+            self.get_stress_strain()
+        except ValueError as e:
+            raise ValueError("Invalid load values or singular ABD matrix.") from e
+
+    def _plot_distribution(self, values, labels, title):
+        """General function to plot stress/strain distributions."""
+        z_bounds = self.lamina_boundaries
+        colors = ["b", "r", "g"]
+        fig, axes = plt.subplots(1, 3, figsize=(15, 6), sharey=True)
+
+        for i, ax in enumerate(axes):
+            for j in range(len(self.plies)):
+                z_lower, z_upper = z_bounds[j], z_bounds[j + 1]
+                val_lower, val_upper = values[j, i], values[j, i]
+                ax.plot([val_lower, val_upper], [z_lower, z_upper], color=colors[i], linestyle="-")
+                if j < len(self.plies) - 1:
+                    ax.plot([val_upper, values[j + 1, i]], [z_upper, z_upper], color=colors[i], linestyle="-")
+
+            ax.axvline(x=0, color="k", linestyle="--", alpha=0.5)
+            ax.set_xlabel(labels[i])
+            ax.grid(True)
+
+        axes[0].set_ylabel("Laminate Thickness Position (m)")
+        fig.suptitle(title, fontsize=14)
+        plt.tight_layout()
+        plt.show()
+
+    @property
+    def stress_graph(self):
+        """Plot stress distribution through laminate thickness."""
+        return self._plot_distribution(
+            self.stresses, [r"$\sigma_x$ (MPa)", r"$\sigma_y$ (MPa)", r"$\tau_{xy}$ (MPa)"], "Stress Distribution in the Laminate"
+        )
+
+    @property
+    def strain_graph(self):
+        """Plot strain distribution through laminate thickness."""
+        return self._plot_distribution(
+            self.strains, [r"$\varepsilon_x$", r"$\varepsilon_y$", r"$\gamma_{xy}$"], "Strain Distribution in the Laminate"
+        )
 
 
 if __name__ == "__main__":
@@ -172,5 +262,8 @@ if __name__ == "__main__":
     l4 = Lamina(90, 200e9, 50e9, 100e6, 0.4, 0.1e-3)
     l5 = Lamina(0, 200e9, 50e9, 100e6, 0.4, 0.1e-3)
 
-    L2 = Laminate(plies=(l1, l2, l3), Nx=1E6)
-    L2.get_stress_strain()
+    L2 = Laminate(plies=(l1, l2, l3, l4, l5), Nx=1e6)
+    print(L2.stresses)
+    print()
+    print(L2.lamina_boundaries)
+    L2.stress_graph()
