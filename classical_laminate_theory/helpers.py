@@ -27,23 +27,23 @@ def parse_layup_string(layup: str):
     s = layup.replace(" ", "")  # remove whitespace
 
     def parse_number(token: str):
-        # token may be like "90", "+-45", or "-+45"
+        # token may be like "90", "+-45", or "-+32.5"
         if token.startswith("+-"):
             try:
-                val = int(token[2:])
+                val = float(token[2:])
             except ValueError:
                 raise ValueError(f"Invalid ply token: {token}")
             return [val, -val]
         elif token.startswith("-+"):
             try:
-                val = int(token[2:])
+                val = float(token[2:])
             except ValueError:
                 raise ValueError(f"Invalid ply token: {token}")
             return [-val, val]
         else:
             # Should be a plain number token (with possible + or - sign)
             try:
-                val = int(token)
+                val = float(token)
             except ValueError:
                 raise ValueError(f"Invalid ply token: {token}")
             return [val]
@@ -52,7 +52,7 @@ def parse_layup_string(layup: str):
         """
         Parse a ply token starting at index i.
         Returns (list_of_plies, new_index).
-        A token is a sequence of characters (possibly +-45 or -+45 or just number),
+        A token is a sequence of characters (e.g. +-45 or -+64.7 or just a single number),
         followed optionally by _<count>.
         """
         start = i
