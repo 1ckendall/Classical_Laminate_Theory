@@ -1,6 +1,7 @@
 import numpy as np
-from abc import ABC, abstractmethod
+from .failuremodels import FailureModel
 import matplotlib.pyplot as plt
+import matplotlib.patches as patches
 import seaborn as sns
 from typing import Annotated
 
@@ -16,6 +17,7 @@ class Lamina:
         G12: float,
         v12: float,
         t: float,
+        failure_model: FailureModel,
     ):
         """
         Initialise a composite lamina with given properties.
@@ -106,70 +108,13 @@ class Lamina:
             ]
         )
 
-    @abstractmethod
-    def failure(self, local_stress, local_strain):
-        return False
-
-
-class TsaiHillLamina(Lamina):
-    def __init__(
-        self,
-        angle: float,
-        E1: float,
-        E2: float,
-        G12: float,
-        v12: float,
-        t: float,
-        X11: float = 0,
-        X22: float = 0,
-        S12: float = 0,
-    ):
-        """
-        A lamina using the Tsai-Hill failure criterion
-        Args:
-            angle: Angle of fibres (deg).
-            E1: E-modulus along the fibres (Pa)
-            E2: E-modulus across the fibres (Pa)
-            G12: Shear modulus (Pa)
-            v12: Major Poisson ratio
-            t: Ply Thickness (m)
-            X11: Allowable strength of the ply in the longitudinal direction (0° direction)
-            X22: Allowable strength of the ply in the transversal direction (90° direction)
-            S12: Allowable in-plane shear strength of the ply between the longitudinal and the
-            transversal directions
-        """
-        super().__init__(angle, E1, E2, G12, v12, t)
-        self.X11 = X11
-        self.X22 = X22
-        self.S12 = S12
-
-    def failure(self, stress, strain):
-        criterion = (
-            (stress[0] / self.X11) ** 2
-            - (stress[0] * stress[1]) / (self.X11**2)
-            + (stress[1] / self.X22) ** 2
-            + (stress[2] / self.S12) ** 2
-        )
-        if criterion < 1:
-            return False
-        return True
-
-
-# PUCK, HASHIN, CHRISTENSEN, LARC05
-
-
-class PuckLamina(Lamina):
-    def __init__(
-        self, angle: float, E1: float, E2: float, G12: float, v12: float, t: float
-    ):
-        super().__init__(angle, E1, E2, G12, v12, t)
-
-    def failure(self, stress, strain):
-        pass
-
 
 class Laminate:
-    def __init__(self, plies: tuple[Lamina, ...], load: Annotated[np.ndarray, (6,)]):
+    def __init__(
+        self,
+        plies: tuple[Lamina, ...],
+        load: Annotated[np.ndarray, (6,)] = np.array([0, 0, 0, 0, 0, 0]),
+    ):
         """
         A composite laminate comprising a layup of plies and under some loading
         Args:
@@ -247,7 +192,7 @@ class Laminate:
             "nij,nj->ni", self.T_matrices, self.global_stresses
         )
 
-    def update_load(self, load):
+    def apply_load(self, load):
         """Update the applied load and recompute stress/strain, with error handling."""
         try:
             self.load = load
@@ -255,21 +200,43 @@ class Laminate:
         except ValueError as e:
             raise ValueError("Invalid load values or singular ABD matrix.") from e
 
-    def _plot_distribution(self, values, labels, title):
-        """General function to plot stress/strain distributions with improved formatting."""
-        sns.set_style("darkgrid")  # Apply seaborn styling
-        sns.set_palette("deep")  # Use a refined color palette
+    import matplotlib.pyplot as plt
+    import seaborn as sns
+    import numpy as np
+
+    def _plot_distribution(
+        self,
+        values,
+        labels,
+        title,
+    ):
+        """
+        General function to plot stress/strain distributions with fiber angle visualization.
+
+        Args:
+            values: The values to plot (stresses or strains)
+            labels: Labels for each axis
+            title: Plot title
+        """
+        sns.set_style("darkgrid")
+        sns.set_palette("deep")
 
         z_bounds = self.lamina_boundaries
-        colors = sns.color_palette("deep", 3)  # Improved color selection
+        colors = sns.color_palette("deep", 3)
 
-        fig, axes = plt.subplots(1, 3, figsize=(15, 6), sharey=True, dpi=100)
+        # Create the main figure with 3 subplots
+        fig, axes = plt.subplots(1, 3, figsize=(18, 6), sharey=True, dpi=100)
+        fig.subplots_adjust(
+            right=0.82  # Adjusted to make more space for the right-hand labels
+        )
 
+        # Plot the main data in the subplots
         for i, ax in enumerate(axes):
             for j in range(len(self.plies)):
                 z_lower, z_upper = z_bounds[j], z_bounds[j + 1]
                 val_lower, val_upper = values[j, i], values[j, i]
 
+                # Plot the vertical line for the ply
                 ax.plot(
                     [val_lower, val_upper],
                     [z_lower, z_upper],
@@ -278,6 +245,7 @@ class Laminate:
                     linewidth=2,
                 )
 
+                # Add horizontal lines at ply breaks (now solid)
                 if j < len(self.plies) - 1:
                     ax.plot(
                         [val_upper, values[j + 1, i]],
@@ -286,24 +254,97 @@ class Laminate:
                         linestyle="-",
                         linewidth=2,
                     )
+                    # Add solid horizontal line at the break
+                    ax.axhline(
+                        y=z_upper,
+                        color="gray",
+                        linestyle="-",  # Changed to solid
+                        alpha=0.3,
+                        linewidth=0.8,
+                    )
 
             ax.axvline(x=0, color="k", linestyle="--", alpha=0.5, linewidth=1.2)
             ax.set_xlabel(labels[i], fontsize=12, fontweight="bold")
             ax.grid(True, linestyle="--", alpha=0.6)
 
-        axes[0].set_ylabel(
-            "Laminate Thickness Position (m)", fontsize=12, fontweight="bold"
-        )
-        fig.suptitle(title, fontsize=14, fontweight="bold")
+        # Set y-label only for the first subplot
+        axes[0].set_ylabel("Z position (m)", fontsize=12, fontweight="bold")
 
-        plt.tight_layout(pad=2)
+        # Add ply angles to the far right of the figure
+        for j in range(len(self.plies)):
+            z_lower, z_upper = z_bounds[j], z_bounds[j + 1]
+            mid_z = float((z_lower + z_upper) / 2)
+            ply_angle = np.degrees(self.plies[j].angle)
+
+            # Place ply angle labels on the far right of the figure
+            axes[0].annotate(
+                text=f"{ply_angle:.2f}°",
+                xy=(3.4, mid_z),  # Position just outside the right edge of the plot
+                xycoords=(
+                    "axes fraction",
+                    "data",
+                ),  # Use axes fraction for x, data for y
+                fontsize=10,
+                color="k",
+                ha="left",
+                va="center",
+                xytext=(10, 0),  # Offset in points
+                textcoords="offset points",
+            )
+
+        # Add a label for the ply angles on the far right of the figure
+        axes[2].text(
+            x=3.62,  # Position just outside the right edge of the plot
+            y=float((z_bounds[0] + z_bounds[-1]) / 2),
+            s="Ply angle (degrees)",
+            fontsize=12,
+            fontweight="bold",
+            rotation=90,
+            va="center",
+            ha="center",
+            transform=axes[
+                0
+            ].get_yaxis_transform(),  # Use y-axis transform for positioning
+        )
+
+        # Add heavy horizontal lines at the top and bottom of the laminate
+        for ax in axes:
+            ax.axhline(
+                y=z_bounds[0], color="gray", linestyle="-", linewidth=2, alpha=0.3
+            )
+            ax.axhline(
+                y=z_bounds[-1], color="gray", linestyle="-", linewidth=2, alpha=0.3
+            )
+            # When you hatch to the edge it will expand the y axis (for some reason), so store the current bounds and
+            # reset them after running the hatching operations
+            ax_bounds = ax.get_ylim()
+            ax.axhspan(
+                ymin=ax_bounds[0],  # Minimum y-limit of the plot
+                ymax=z_bounds[0],  # Minimum z bound
+                color="gray",
+                alpha=0.1,  # Light transparency
+                hatch="///",  # Hatching pattern
+                linewidth=0.5,
+            )
+            # Hatching above the maximum z bound
+            ax.axhspan(
+                ymin=z_bounds[-1],  # Maximum z bound
+                ymax=ax_bounds[1],  # Maximum y-limit of the plot
+                color="gray",
+                alpha=0.1,  # Light transparency
+                hatch="///",  # Hatching pattern
+                linewidth=0.5,
+            )
+            ax.set_ylim(ax_bounds)
+
+        fig.suptitle(title, fontweight="bold")
         plt.show()
 
     @property
     def global_stress_graph(self):
         """Plot stress distribution through laminate thickness."""
         return self._plot_distribution(
-            self.global_stresses,
+            self.global_stresses * 1e-6,
             [r"$\sigma_{xx}$ (MPa)", r"$\sigma_{yy}$ (MPa)", r"$\tau_{xy}$ (MPa)"],
             "Global Stress Distribution in the Laminate",
         )
@@ -321,7 +362,7 @@ class Laminate:
     def local_stress_graph(self):
         """Plot stress distribution through laminate thickness."""
         return self._plot_distribution(
-            self.local_stresses,
+            self.local_stresses * 1e-6,
             [r"$\sigma_{11}$ (MPa)", r"$\sigma_{22}$ (MPa)", r"$\tau_{12}$ (MPa)"],
             "Local Stress Distribution in the Laminate",
         )
@@ -330,7 +371,7 @@ class Laminate:
     def local_strain_graph(self):
         """Plot strain distribution through laminate thickness."""
         return self._plot_distribution(
-            self.local_stresses,
+            self.local_strains,
             [r"$\varepsilon_{11}$", r"$\varepsilon_{22}$", r"$\gamma_{12}$"],
             "Local Strain Distribution in the Laminate",
         )

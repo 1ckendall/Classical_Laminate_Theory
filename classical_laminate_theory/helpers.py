@@ -1,6 +1,11 @@
+from .structures import Lamina, Laminate
+from .failuremodels import FailureModel
+import numpy as np
+
+
 def parse_layup_string(layup: str):
     """
-    Parses a composite layup expression (with nested groups) into a tuple of ply angles.
+    Parses a composite layup expression into a tuple of ply angles.
 
     Supported syntax:
       - Groups: [ ... ]
@@ -13,11 +18,11 @@ def parse_layup_string(layup: str):
     An assumption is made that you aren't repeating a single ply angle or symmetry more than 9 times (you monster).
 
     Examples:
-      [+-45, 90_2]_s        → [-45, 90, 90, 90, 90, -45]
-      [0_2, 90, +-45]_s     → [0, 0, 90, 45, -45, -45, 45, 90, 0, 0]
-      [90, -+45]            → [90, -45, 45]
-      [[90, 30]_s, +-45]_s  → [90, 30, 30, 90, 45, -45, -45, 45, 90, 30, 30, 90]
-      [+-45,90]_2s          → [45, -45, 90, 90, -45, 45, 45, -45, 90, 90, -45, 45]
+      - [+-45, 90_2]_s        → [-45, 90, 90, 90, 90, -45]
+      - [0_2, 90, +-45]_s     → [0, 0, 90, 45, -45, -45, 45, 90, 0, 0]
+      - [90, -+45]            → [90, -45, 45]
+      - [[90, 30]_s, +-45]_s  → [90, 30, 30, 90, 45, -45, -45, 45, 90, 30, 30, 90]
+      - [+-45,90]_2s          → [45, -45, 90, 90, -45, 45, 45, -45, 90, 90, -45, 45]
     """
     s = layup.replace(" ", "")  # remove whitespace
 
@@ -94,9 +99,6 @@ def parse_layup_string(layup: str):
         if i >= len(s) or s[i] != "]":
             raise ValueError("Unmatched '[' in expression")
         i += 1  # skip the closing ']'
-        # After the group, check for symmetry marker or count modifier.
-        is_symmetric = False
-        symmetry_count = 0
         count = 1  # Default count multiplier
 
         if i < len(s) and s[i] == "_":
@@ -110,7 +112,6 @@ def parse_layup_string(layup: str):
 
             # If the next character is 's', we have a symmetry modifier
             if i < len(s) and s[i] == "s":
-                is_symmetric = True
                 i += 1  # Move past 's'
                 symmetry_count = (
                     int(num_str) if num_str else 1
@@ -140,3 +141,20 @@ def parse_layup_string(layup: str):
             f"Extra characters after parsing: Parsing stopped at position {pos}, remaining string: '{s[pos:]}"
         )
     return tuple(result)
+
+
+def laminate_builder(
+    layup: str,
+    E1,
+    E2,
+    G12,
+    v12,
+    t,
+    failure_model: FailureModel,
+    loading=np.array([0, 0, 0, 0, 0, 0]),
+):
+    angles = parse_layup_string(layup)
+    plies = []
+    for angle in angles:
+        plies.append(Lamina(angle, E1, E2, G12, v12, t, failure_model))
+    return Laminate(plies, loading)
