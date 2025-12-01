@@ -1,7 +1,8 @@
-from classical_laminate_theory.structures import Lamina, Laminate
+import numpy as np
+
 from classical_laminate_theory.failuremodels import TsaiHill
 from classical_laminate_theory.helpers import laminate_builder
-import numpy as np
+from classical_laminate_theory.structures import Lamina, Laminate
 
 failure_model = TsaiHill(100e6, 10e6, 30e6)
 L = laminate_builder(

@@ -1,160 +1,130 @@
-from .structures import Lamina, Laminate
-from .failuremodels import FailureModel
 import numpy as np
+
+from classical_laminate_theory.failuremodels import FailureModel
+from classical_laminate_theory.structures import Lamina, Laminate
 
 
 def parse_layup_string(layup: str):
     """
-    Parses a composite layup expression into a tuple of ply angles.
+    Parses a composite layup string into a flat tuple of ply angles.
 
-    Supported syntax:
-      - Groups: [ ... ]
-      - Ply tokens: e.g. "90", "0", "+-45", "-+45"
-      - Optional count modifiers: e.g. "90_2" repeats the ply 2 times.
-      - Optional symmetry: a group ending with _s is mirrored.
-      - Optional multiple symmetry: a group ending with _ns is mirrored n times.
-      - Items are separated by commas.
-
-    An assumption is made that you aren't repeating a single ply angle or symmetry more than 9 times (you monster).
-
-    Examples:
-      - [+-45, 90_2]_s        → [-45, 90, 90, 90, 90, -45]
-      - [0_2, 90, +-45]_s     → [0, 0, 90, 45, -45, -45, 45, 90, 0, 0]
-      - [90, -+45]            → [90, -45, 45]
-      - [[90, 30]_s, +-45]_s  → [90, 30, 30, 90, 45, -45, -45, 45, 90, 30, 30, 90]
-      - [+-45,90]_2s          → [45, -45, 90, 90, -45, 45, 45, -45, 90, 90, -45, 45]
+    Improvements over original:
+    1. Supports '/' as a delimiter (e.g., "[0/90]_s").
+    2. Corrects symmetry logic: "_2s" now means "Repeat 2x then Mirror" (Standard)
+       instead of "Mirror then Repeat 2x".
+    3. Better error reporting.
     """
     s = layup.replace(" ", "")  # remove whitespace
 
     def parse_number(token: str):
-        # token may be like "90", "+-45", or "-+32.5"
+        # Handles "90", "+-45", "-+45"
         if token.startswith("+-"):
             try:
                 val = float(token[2:])
             except ValueError:
-                raise ValueError(f"Invalid ply token: {token}")
+                raise ValueError(f"Invalid ply angle: '{token}'")
             return [val, -val]
         elif token.startswith("-+"):
             try:
                 val = float(token[2:])
             except ValueError:
-                raise ValueError(f"Invalid ply token: {token}")
+                raise ValueError(f"Invalid ply angle: '{token}'")
             return [-val, val]
         else:
-            # Should be a plain number token (with possible + or - sign)
             try:
                 val = float(token)
             except ValueError:
-                raise ValueError(f"Invalid ply token: {token}")
+                raise ValueError(f"Invalid ply angle: '{token}'")
             return [val]
 
     def parse_token(i: int):
-        """
-        Parse a ply token starting at index i.
-        Returns (list_of_plies, new_index).
-        A token is a sequence of characters (e.g. +-45 or -+64.7 or just a single number),
-        followed optionally by _<count>.
-        """
+        """Parse a single token (e.g. '90' or '45_2')."""
         start = i
-        # Read characters until a delimiter is reached (comma or ']' or end of string)
-        while i < len(s) and s[i] not in [",", "]"]:
+        # Stop at delimiters or end of group
+        while i < len(s) and s[i] not in [",", "/", "]"]:
             i += 1
+
         token = s[start:i]
-        # Check if there is a count modifier at the end of the token (e.g. _2)
+        if not token:
+            return [], i
+
+            # Handle ply-level repetition (e.g., 90_2)
         if "_" in token:
-            token_parts = token.split("_")
-            token_val = token_parts[0]
+            parts = token.split("_")
+            if len(parts) != 2:
+                raise ValueError(f"Invalid token format at pos {start}: '{token}'")
+            base_token = parts[0]
             try:
-                count = int(token_parts[1])
+                count = int(parts[1])
             except ValueError:
-                raise ValueError(f"Invalid count modifier in token: {token}")
+                raise ValueError(f"Invalid repetition count at pos {start}: '{token}'")
         else:
-            token_val = token
+            base_token = token
             count = 1
-        plies = parse_number(token_val)
+
+        plies = parse_number(base_token)
         return plies * count, i
 
     def parse_group(i: int):
-        """
-        Parse a group starting at s[i] (expects s[i]=='[').
-        Returns (list_of_plies, new_index).
-        Also handles an optional trailing symmetry marker (_ns or _s) after the closing bracket.
-        """
+        """Recursive parser for groups like [0, 90]_s."""
         if s[i] != "[":
-            raise ValueError("Group must start with '['")
+            raise ValueError(f"Expected '[' at position {i}")
         i += 1  # skip '['
+
         group_plies = []
         while i < len(s) and s[i] != "]":
-            if s[i] == ",":
-                i += 1  # skip comma
+            # Skip delimiters
+            if s[i] in [",", "/"]:
+                i += 1
                 continue
+
+            # Recurse for nested groups
             if s[i] == "[":
-                # Nested group
                 sub_plies, i = parse_group(i)
                 group_plies.extend(sub_plies)
             else:
-                # Should be a ply token
                 token_plies, i = parse_token(i)
                 group_plies.extend(token_plies)
+
         if i >= len(s) or s[i] != "]":
-            raise ValueError("Unmatched '[' in expression")
-        i += 1  # skip the closing ']'
-        count = 1  # Default count multiplier
+            raise ValueError("Unmatched '[' - missing closing bracket.")
+        i += 1  # skip ']'
+
+        # Handle Group Modifiers (e.g. _2, _s, _2s)
+        count = 1
+        is_symmetric = False
 
         if i < len(s) and s[i] == "_":
-            i += 1  # Move past "_"
+            i += 1  # skip '_'
             num_str = ""
-
-            # Check if there's a numeric symmetry count (e.g., _2s)
             while i < len(s) and s[i].isdigit():
                 num_str += s[i]
                 i += 1
 
-            # If the next character is 's', we have a symmetry modifier
+            # Determine count
+            count = int(num_str) if num_str else 1
+
+            # Check for symmetry
             if i < len(s) and s[i] == "s":
-                i += 1  # Move past 's'
-                symmetry_count = (
-                    int(num_str) if num_str else 1
-                )  # Default to 1 if no number was provided
-                result = group_plies
-                for _ in range(symmetry_count):
-                    result = result + result[::-1]
-            # Else we have a repeated group
-            else:
-                j = i + 1
-                num_str = ""
-                while j < len(s) and s[j].isdigit():
-                    num_str += s[j]
-                    j += 1
-                if num_str:
-                    count = int(num_str)
-                    i = j
-                result = group_plies * count
-        else:
-            result = group_plies
+                is_symmetric = True
+                i += 1
+
+        # Apply Logic: Repeat first, then Mirror (Standard Convention)
+        result = group_plies * count
+        if is_symmetric:
+            result = result + result[::-1]
+
         return result, i
 
-    # The top-level expression must be a group.
+    # Start parsing
+    if not s.startswith("["):
+        # Allow bare strings like "0, 90" by wrapping them implicitly?
+        # For now, enforce brackets to match strict notation.
+        raise ValueError("Layup string must start with '['")
+
     result, pos = parse_group(0)
+
     if pos != len(s):
-        raise ValueError(
-            f"Extra characters after parsing: Parsing stopped at position {pos}, remaining string: '{s[pos:]}"
-        )
+        raise ValueError(f"Parsing ended early at char {pos}. Remaining: '{s[pos:]}'")
+
     return tuple(result)
-
-
-def laminate_builder(
-    layup: str,
-    E1,
-    E2,
-    G12,
-    v12,
-    t,
-    failure_model: FailureModel,
-    loading=np.array([0, 0, 0, 0, 0, 0]),
-):
-    angles = parse_layup_string(layup)
-    plies = []
-    for angle in angles:
-        plies.append(Lamina(angle, E1, E2, G12, v12, t, failure_model))
-    return Laminate(plies, loading)
