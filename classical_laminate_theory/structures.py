@@ -467,3 +467,4 @@ class Laminate:
             [r"$\varepsilon_{11}$", r"$\varepsilon_{22}$", r"$\gamma_{12}$"],
             "Local Strain Distribution in the Laminate",
         )
+
