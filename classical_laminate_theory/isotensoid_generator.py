@@ -2,9 +2,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.integrate import solve_ivp
 from scipy.optimize import brentq
+import ezdxf
 
 
-class IsotensoidProfileUniversal:
+class IsotensoidProfile:
     def __init__(self, R, r0, a=None):
         """
         Args:
@@ -151,10 +152,36 @@ class IsotensoidProfileUniversal:
         plt.show()
 
 
+def export_to_dxf(z_coords, r_coords, add_axis = False, filename='isotensoid_profile.dxf'):
+    # Create a new DXF document
+    doc = ezdxf.new('R2018')
+    msp = doc.modelspace()
+
+    # Create a list of (x, y, z) tuples
+    # Mapping Z_profile -> X, R_profile -> Y
+    points = [(z, r, 0) for z, r in zip(z_coords, r_coords)]
+
+    # Add a spline through these points
+    msp.add_spline(points)
+
+    # Optional: Add a centerline for the revolve axis
+    if add_axis:
+        min_x = min(z_coords)
+        max_x = max(z_coords)
+        msp.add_line((min_x, 0, 0), (max_x, 0, 0))
+
+    doc.saveas(filename)
+    print(f"DXF saved to {filename}")
+
+
 # --- Example Usage ---
 # We do not pass 'a', so it defaults to the Toroidal condition (-rho0^2)
-dome = IsotensoidProfileUniversal(R=115.0/2, r0=50.0/2)
+dome = IsotensoidProfile(R=115.0/2, r0=50.0/2, a=0)
 dome.plot_profile()
+
+# --- Usage ---
+z, r = dome.generate_profile(num_points=200)
+export_to_dxf(z, r)
 
 # Check the winding angle at R
 print(f"Winding angle at R: {np.degrees(np.arcsin(dome.rho0)):.2f} degrees")
