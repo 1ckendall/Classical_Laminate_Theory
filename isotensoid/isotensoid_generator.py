@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib.patches import Rectangle
 from scipy.integrate import solve_ivp
 from scipy.optimize import brentq
 import ezdxf
@@ -171,6 +172,81 @@ def export_to_dxf(z_coords, r_coords, add_axis = False, filename='isotensoid_pro
 
     doc.saveas(filename)
     print(f"DXF saved to {filename}")
+
+
+def export_1to1_pdf(z_coords, r_coords, filename="isotensoid_1to1.pdf"):
+    """
+    Exports a 1:1 scale PDF of the full cross-section (both sides).
+    Includes a 10mm calibration square.
+    """
+    # 1. Determine physical dimensions in mm
+    z_min, z_max = np.min(z_coords), np.max(z_coords)
+    r_max = np.max(r_coords)
+
+    # Calculate bounds for both sides (top and bottom)
+    height_mm = 2 * r_max
+    width_mm = z_max - z_min
+
+    # 2. Add Margins (e.g., 20mm padding total)
+    margin_mm = 20
+    total_width_mm = width_mm + margin_mm
+    total_height_mm = height_mm + margin_mm
+
+    # 3. Convert to inches for Matplotlib (25.4 mm = 1 inch)
+    fig_width_in = total_width_mm / 25.4
+    fig_height_in = total_height_mm / 25.4
+
+    # 4. Create Figure with exact dimensions
+    fig = plt.figure(figsize=(fig_width_in, fig_height_in))
+
+    # Create axes that fill the figure exactly (0 to 1 in relative coords)
+    # We will control the specific data limits to handle margins
+    ax = fig.add_axes([0, 0, 1, 1])
+
+    # 5. Plot the Geometry
+    # Top profile
+    ax.plot(z_coords, r_coords, 'k-', linewidth=1.0)
+    # Bottom profile (mirrored)
+    ax.plot(z_coords, -r_coords, 'k-', linewidth=1.0)
+
+    # Centerline
+    ax.plot([z_min, z_max], [0, 0], 'k-.', linewidth=0.5, alpha=0.5)
+
+    # Opening lines (vertical lines at z_max)
+    ax.plot([z_max, z_max], [r_coords[0], -r_coords[0]], 'k-', linewidth=0.5)
+
+    # 6. Add a Calibration Square (10mm x 10mm)
+    # Place it near the bottom left (but inside the margin)
+    cal_x = z_min - (margin_mm / 2) + 2
+    cal_y = -r_max - (margin_mm / 2) + 2
+
+    # If the square falls outside the view, shift it closer to geometry
+    rect = Rectangle((z_max, -r_max), 10, 10,
+                     linewidth=1, edgecolor='r', facecolor='none', label='10mm Scale')
+    ax.add_patch(rect)
+    ax.text(z_max + 1, -r_max + 12, "10mm Scale", color='red', fontsize=8)
+
+    # 7. Set Axis Limits to match the Figure Size exactly
+    # The figure center is the geometry center
+    center_z = (z_min + z_max) / 2
+    center_r = 0
+
+    # Set limits based on the total physical size we calculated
+    ax.set_xlim(center_z - total_width_mm / 2, center_z + total_width_mm / 2)
+    ax.set_ylim(center_r - total_height_mm / 2, center_r + total_height_mm / 2)
+
+    # Ensure aspect ratio is preserved
+    ax.set_aspect('equal')
+
+    # Turn off axis labels/ticks for a clean template
+    ax.axis('off')
+
+    # 8. Save
+    plt.savefig(filename, dpi=300)
+    plt.close(fig)
+    print(f"1:1 Scale PDF saved to {filename}")
+    print(f"  - Physical Size: {total_width_mm:.1f}mm x {total_height_mm:.1f}mm")
+    print("  - NOTE: When printing, ensure 'Scale' is set to '100%' or 'Actual Size'.")
 
 
 # --- Example Usage ---
