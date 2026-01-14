@@ -228,7 +228,7 @@ class IsotensoidProfile:
             filename: Output filename
             add_axis: If True, adds a centerline on the Z axis.
             use_spline: If True, uses SPLINE entity (smooth but maybe less compatible).
-                        If False, uses LWPOLYLINE (standard compatibility).
+                        If False, uses POLYLINE entity (standard compatibility).
         """
         if self.z_coords is None:
             self.generate_profile()
@@ -236,16 +236,17 @@ class IsotensoidProfile:
         doc = ezdxf.new('R2010')
         msp = doc.modelspace()
 
+        # Always generate 3D points (x, y, 0) for triples
+        points = [(z, r, 0) for z, r in zip(self.z_coords, self.r_coords)]
+
         if use_spline:
-            # SPLINE requires 3D points (x, y, z)
-            points = [(z, r, 0) for z, r in zip(self.z_coords, self.r_coords)]
             msp.add_spline(points)
             print("Exported as SPLINE")
         else:
-            # LWPOLYLINE requires 2D points (x, y)
-            points = [(z, r) for z, r in zip(self.z_coords, self.r_coords)]
-            msp.add_lwpolyline(points)
-            print("Exported as POLYLINE")
+            # Use 2D Polyline with PLINEGEN flag (128) for continuous linetype generation
+            # We use add_polyline2d (legacy POLYLINE) which accepts 3-tuples (z is elevation or ignored/projected)
+            msp.add_polyline2d(points, dxfattribs={'flags': 128})
+            print("Exported as POLYLINE (2D with PLINEGEN)")
 
         # Add centerline
         if add_axis:
