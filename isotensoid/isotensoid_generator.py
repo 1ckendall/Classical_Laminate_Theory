@@ -5,6 +5,7 @@ from scipy.integrate import solve_ivp
 from scipy.optimize import brentq
 import ezdxf
 from typing import Tuple, Optional
+import sys
 
 
 class IsotensoidProfile:
@@ -220,7 +221,7 @@ class IsotensoidProfile:
         plt.tight_layout()
         plt.show()
 
-    def export_to_dxf(self, filename: str = 'isotensoid_profile.dxf', add_axis: bool = True, use_spline: bool = False):
+    def export_to_dxf(self, filename: str = 'isotensoid_profile.dxf', add_axis: bool = False, use_spline: bool = False):
         """
         Exports the profile to a DXF.
 
@@ -240,12 +241,13 @@ class IsotensoidProfile:
         # This ensures X (Z) is strictly increasing
         clean_points = []
         if len(self.z_coords) > 0:
-            clean_points.append((self.z_coords[0], self.r_coords[0]))
+            # Explicit float cast to avoid ezdxf numpy issues
+            clean_points.append((float(self.z_coords[0]), float(self.r_coords[0])))
 
             epsilon_z = 1e-6
             for i in range(1, len(self.z_coords)):
-                z_curr = self.z_coords[i]
-                r_curr = self.r_coords[i]
+                z_curr = float(self.z_coords[i])
+                r_curr = float(self.r_coords[i])
                 z_prev = clean_points[-1][0]
 
                 # Only add if Z strictly increases
@@ -254,12 +256,13 @@ class IsotensoidProfile:
 
         if use_spline:
             # SPLINE uses raw 3D points
-            points = [(z, r, 0) for z, r in zip(self.z_coords, self.r_coords)]
+            points = [(float(z), float(r), 0.0) for z, r in zip(self.z_coords, self.r_coords)]
             msp.add_spline(points)
             print("Exported as SPLINE")
         else:
             # Create LWPOLYLINE (Open)
             # Maps Z coords -> X axis, R coords -> Y axis
+            # Strict 2D points (x, y) required for LWPOLYLINE
             polyline = msp.add_lwpolyline(
                 clean_points,
                 close=False,
@@ -267,18 +270,22 @@ class IsotensoidProfile:
             )
 
             # Set Plinegen Flag (Bit 128)
+            # This ensures linetype generation continues across vertices
             polyline.dxf.flags |= 128
             print(f"Exported as LWPOLYLINE (Bit 128, {len(clean_points)} points)")
 
         # Add centerline
         if add_axis:
-            min_z = np.min(self.z_coords)
-            max_z = np.max(self.z_coords)
+            min_z = float(np.min(self.z_coords))
+            max_z = float(np.max(self.z_coords))
             # Line is 3D in modelspace
             msp.add_line((min_z, 0, 0), (max_z, 0, 0))
 
-        doc.saveas(filename)
-        print(f"DXF saved to {filename}")
+        try:
+            doc.saveas(filename)
+            print(f"DXF saved to {filename}")
+        except PermissionError:
+            print(f"ERROR: Could not save '{filename}'. The file might be open in another program.")
 
     def export_1to1_pdf(self, filename: str = "isotensoid_1to1.pdf"):
         """Exports a calibrated 1:1 scale PDF of the full vessel."""
@@ -338,9 +345,12 @@ class IsotensoidProfile:
         ax.set_aspect('equal')
         ax.axis('off')
 
-        plt.savefig(filename, dpi=300)
-        plt.close(fig)
-        print(f"1:1 Scale PDF saved to {filename}")
+        try:
+            plt.savefig(filename, dpi=300)
+            plt.close(fig)
+            print(f"1:1 Scale PDF saved to {filename}")
+        except PermissionError:
+            print(f"ERROR: Could not save '{filename}'. PDF might be open.")
 
 
 # --- Main Execution Block ---
