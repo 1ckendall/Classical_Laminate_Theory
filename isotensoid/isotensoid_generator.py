@@ -346,8 +346,8 @@ class IsotensoidProfile:
 # --- Main Execution Block ---
 if __name__ == "__main__":
     # Example Parameters (mm)
-    DIAMETER = 115.0
-    BOSS_DIAMETER = 50.0
+    DIAMETER = 120.0
+    BOSS_DIAMETER = 75.0
     CYL_LENGTH = 100.0
 
     # 1. Initialize
