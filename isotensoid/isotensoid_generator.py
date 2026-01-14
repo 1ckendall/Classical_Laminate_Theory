@@ -227,8 +227,8 @@ class IsotensoidProfile:
         Args:
             filename: Output filename
             add_axis: If True, adds a centerline on the Z axis.
-            use_spline: If True, uses SPLINE entity (smooth but maybe less compatible).
-                        If False, uses 3D POLYLINE entity with PLINEGEN flag.
+            use_spline: If True, uses SPLINE entity.
+                        If False, uses LWPOLYLINE with strictly increasing X coordinates and Plinegen flag (Bit 128).
         """
         if self.z_coords is None:
             self.generate_profile()
@@ -236,24 +236,45 @@ class IsotensoidProfile:
         doc = ezdxf.new('R2010')
         msp = doc.modelspace()
 
-        # Always generate 3D points (x, y, 0) for triples
-        points = [(z, r, 0) for z, r in zip(self.z_coords, self.r_coords)]
+        # Clean Data (Remove duplicates at seams) for Polyline
+        # This ensures X (Z) is strictly increasing
+        clean_points = []
+        if len(self.z_coords) > 0:
+            clean_points.append((self.z_coords[0], self.r_coords[0]))
+
+            epsilon_z = 1e-6
+            for i in range(1, len(self.z_coords)):
+                z_curr = self.z_coords[i]
+                r_curr = self.r_coords[i]
+                z_prev = clean_points[-1][0]
+
+                # Only add if Z strictly increases
+                if z_curr > (z_prev + epsilon_z):
+                    clean_points.append((z_curr, r_curr))
 
         if use_spline:
+            # SPLINE uses raw 3D points
+            points = [(z, r, 0) for z, r in zip(self.z_coords, self.r_coords)]
             msp.add_spline(points)
             print("Exported as SPLINE")
         else:
-            # use_spline=False means we export as a POLYLINE.
-            # We use add_polyline3d to satisfy the software requirement for a "3D Polyline".
-            # We pass flags = 136 (128 for PLINEGEN + 8 for 3D Polyline).
-            # This ensures both the entity type and the flag you requested are present.
-            msp.add_polyline3d(points, dxfattribs={'flags': 136})
-            print("Exported as POLYLINE (3D with PLINEGEN, flag=136)")
+            # Create LWPOLYLINE (Open)
+            # Maps Z coords -> X axis, R coords -> Y axis
+            polyline = msp.add_lwpolyline(
+                clean_points,
+                close=False,
+                dxfattribs={'layer': 'PROFILE', 'color': 1}
+            )
+
+            # Set Plinegen Flag (Bit 128)
+            polyline.dxf.flags |= 128
+            print(f"Exported as LWPOLYLINE (Bit 128, {len(clean_points)} points)")
 
         # Add centerline
         if add_axis:
             min_z = np.min(self.z_coords)
             max_z = np.max(self.z_coords)
+            # Line is 3D in modelspace
             msp.add_line((min_z, 0, 0), (max_z, 0, 0))
 
         doc.saveas(filename)

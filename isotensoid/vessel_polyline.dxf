@@ -489,7 +489,7 @@ $SKPOLY
   9
 $TDCREATE
  40
-2461055.5443055555
+2461055.546724537
   9
 $TDUCREATE
  40
@@ -497,7 +497,7 @@ $TDUCREATE
   9
 $TDUPDATE
  40
-2461055.5443055555
+2461055.546724537
   9
 $TDUUPDATE
  40
@@ -549,7 +549,7 @@ $SPLINESEGS
   9
 $HANDSEED
   5
-28F
+34
   9
 $SURFTAB1
  70
@@ -929,11 +929,11 @@ $PSTYLEMODE
   9
 $FINGERPRINTGUID
   2
-{084ECCEB-70FF-45EA-89C2-7D6C10BC2242}
+{8E176FE7-A8DA-4D63-AEC9-99FC94FC5ABC}
   9
 $VERSIONGUID
   2
-{89DCF285-10E6-4B2D-912D-127C63DCBCD2}
+{BCB30658-27C6-46A3-979A-48E5B8B007C3}
   9
 $EXTNAMES
 290
@@ -1701,7 +1701,7 @@ ACAD
   0
 APPID
   5
-28C
+31
 330
 3
 100
@@ -1715,7 +1715,7 @@ HATCHBACKGROUNDCOLOR
   0
 APPID
   5
-28D
+32
 330
 3
 100
@@ -2023,7 +2023,7 @@ SECTION
   2
 ENTITIES
   0
-POLYLINE
+LWPOLYLINE
   5
 2F
 330
@@ -2031,13277 +2031,2419 @@ POLYLINE
 100
 AcDbEntity
   8
-0
-100
-AcDb3dPolyline
- 66
+PROFILE
+ 62
 1
- 10
-0.0
- 20
-0.0
- 30
-0.0
+100
+AcDbPolyline
+ 90
+600
  70
-136
-  0
-VERTEX
-  5
-31
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
+128
  10
 -79.01911095544551
  20
 25.0
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-32
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -79.01768766472217
  20
 25.108695652173914
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-33
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -79.0150717981151
  20
 25.217391304347824
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-34
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -79.01166552988053
  20
 25.32608695652174
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-35
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -79.00760946343573
  20
 25.434782608695652
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-36
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -79.00298314843634
  20
 25.543478260869563
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-37
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.99783939430462
  20
 25.652173913043477
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-38
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.99221583991475
  20
 25.76086956521739
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-39
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.98614157914035
  20
 25.8695652173913
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-3A
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.97963920788878
  20
 25.978260869565215
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-3B
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.97272690579096
  20
 26.08695652173913
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-3C
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.96541982012386
  20
 26.195652173913043
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-3D
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.95773089274876
  20
 26.304347826086957
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-3E
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.94967089959061
  20
 26.41304347826087
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-3F
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.94124914758918
  20
 26.52173913043478
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-40
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.93247356166243
  20
 26.630434782608695
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-41
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.92335116290464
  20
 26.73913043478261
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-42
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.9138882523136
  20
 26.847826086956523
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-43
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.90409041079067
  20
 26.956521739130434
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-44
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.89396249914081
  20
 27.065217391304348
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-45
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.88350873243314
  20
 27.17391304347826
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-46
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.87273306300266
  20
 27.282608695652172
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-47
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.8616388255903
  20
 27.391304347826086
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-48
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.85022905306477
  20
 27.5
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-49
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.8385065329519
  20
 27.60869565217391
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-4A
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.82647380743468
  20
 27.717391304347824
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-4B
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.81413317335323
  20
 27.82608695652174
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-4C
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.8014866822048
  20
 27.934782608695652
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-4D
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.7885361401438
  20
 28.043478260869566
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-4E
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.7752831079818
  20
 28.15217391304348
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-4F
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.76172895534982
  20
 28.26086956521739
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-50
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.74787508779326
  20
 28.369565217391305
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-51
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.7337225744194
  20
 28.47826086956522
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-52
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.71927235628436
  20
 28.58695652173913
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-53
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.70452528701954
  20
 28.695652173913043
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-54
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.68948213283156
  20
 28.804347826086957
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-55
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.67414357250239
  20
 28.91304347826087
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-56
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.65851019738922
  20
 29.021739130434785
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-57
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.64258251142455
  20
 29.130434782608692
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-58
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.62636093111612
  20
 29.239130434782606
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-59
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.609845785547
  20
 29.34782608695652
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-5A
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.59303731637546
  20
 29.456521739130434
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-5B
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.5759356778351
  20
 29.565217391304348
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-5C
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.55854093673479
  20
 29.67391304347826
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-5D
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.54085307245866
  20
 29.78260869565218
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-5E
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.52287203400965
  20
 29.891304347826086
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-5F
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.50459785170914
  20
 30.0
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-60
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.48603034225559
  20
 30.108695652173914
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-61
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.46716926930225
  20
 30.217391304347828
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-62
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.44801436059937
  20
 30.326086956521742
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-63
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.42856530799425
  20
 30.43478260869565
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-64
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.40882176743122
  20
 30.543478260869563
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-65
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.38878335895167
  20
 30.652173913043477
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-66
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.368449666694
  20
 30.76086956521739
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-67
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.34782023889365
  20
 30.869565217391305
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-68
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.3268945878831
  20
 30.97826086956522
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-69
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.30567219009188
  20
 31.086956521739133
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-6A
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.28415248604654
  20
 31.195652173913043
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-6B
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.26233488037066
  20
 31.304347826086957
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-6C
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.24021874178487
  20
 31.41304347826087
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-6D
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.21780340310684
  20
 31.521739130434785
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-6E
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.19508816125128
  20
 31.6304347826087
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-6F
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.1720722772299
  20
 31.739130434782613
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-70
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.1487549761515
  20
 31.84782608695652
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-71
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.12513544722187
  20
 31.956521739130434
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-72
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.10121284374385
  20
 32.065217391304344
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-73
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.07698628311734
  20
 32.173913043478265
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-74
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.05245484787464
  20
 32.28260869565218
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-75
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.02761766248477
  20
 32.39130434782609
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-76
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -78.0024738161753
  20
 32.50000000000001
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-77
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -77.97702233474561
  20
 32.608695652173914
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-78
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -77.95126222008615
  20
 32.71739130434783
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-79
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -77.9251924501783
  20
 32.82608695652174
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-7A
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -77.89881197909446
  20
 32.934782608695656
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-7B
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -77.872119736998
  20
 33.04347826086957
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-7C
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -77.84511463014329
  20
 33.15217391304348
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-7D
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -77.81779554087564
  20
 33.26086956521739
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-7E
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -77.79016132763141
  20
 33.369565217391305
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-7F
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -77.76221082493791
  20
 33.47826086956522
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-80
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -77.73394284341343
  20
 33.58695652173913
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-81
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -77.70535616976728
  20
 33.69565217391305
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-82
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -77.67644956679973
  20
 33.80434782608696
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-83
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -77.64722177340202
  20
 33.91304347826087
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-84
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -77.61767150455643
  20
 34.02173913043478
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-85
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -77.58779745133617
  20
 34.130434782608695
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-86
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -77.55759828090547
  20
 34.23913043478261
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-87
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -77.52707263651952
  20
 34.34782608695652
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-88
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -77.49621913752453
  20
 34.45652173913043
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-89
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -77.46503637935767
  20
 34.565217391304344
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-8A
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -77.4335229335471
  20
 34.67391304347826
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-8B
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -77.40167734771197
  20
 34.78260869565217
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-8C
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -77.36949814556242
  20
 34.891304347826086
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-8D
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -77.33698382689957
  20
 35.0
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-8E
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -77.30413286761552
  20
 35.108695652173914
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-8F
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -77.27094371969338
  20
 35.21739130434783
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-90
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -77.2374148112072
  20
 35.326086956521735
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-91
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -77.20354454632209
  20
 35.43478260869565
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-92
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -77.16933130529407
  20
 35.54347826086956
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-93
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -77.13477344447018
  20
 35.652173913043484
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-94
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -77.09986929628845
  20
 35.7608695652174
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-95
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -77.0646171692779
  20
 35.869565217391305
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-96
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -77.02901534805851
  20
 35.97826086956522
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-97
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -76.99306209334127
  20
 36.08695652173913
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-98
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -76.9567554927899
  20
 36.19565217391305
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-99
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -76.92009342941033
  20
 36.30434782608696
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-9A
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -76.88307417387433
  20
 36.413043478260875
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-9B
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -76.84569598015435
  20
 36.52173913043479
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-9C
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -76.80795706442203
  20
 36.630434782608695
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-9D
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -76.76985560504838
  20
 36.73913043478261
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-9E
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -76.73138974260365
  20
 36.84782608695652
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-9F
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -76.69255757985736
  20
 36.95652173913044
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-A0
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -76.65335718177838
  20
 37.06521739130435
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-A1
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -76.61378657553475
  20
 37.17391304347826
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-A2
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -76.5738437504939
  20
 37.28260869565217
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-A3
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -76.53352665822247
  20
 37.391304347826086
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-A4
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -76.49283321248642
  20
 37.5
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-A5
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -76.45176128925098
  20
 37.608695652173914
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-A6
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -76.41030872668065
  20
 37.71739130434783
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-A7
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -76.36847332513925
  20
 37.82608695652174
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-A8
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -76.32625284718985
  20
 37.934782608695656
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-A9
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -76.28364501759478
  20
 38.04347826086956
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-AA
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -76.24064752331572
  20
 38.15217391304348
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-AB
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -76.19725801351356
  20
 38.26086956521739
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-AC
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -76.15347409954852
  20
 38.369565217391305
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-AD
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -76.10929335498007
  20
 38.47826086956522
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-AE
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -76.064713315567
  20
 38.586956521739125
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-AF
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -76.01973147926736
  20
 38.69565217391304
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-B0
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -75.97434530623846
  20
 38.80434782608695
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-B1
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -75.92855221883693
  20
 38.91304347826087
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-B2
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -75.88234960161866
  20
 39.02173913043478
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-B3
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -75.83573480133883
  20
 39.1304347826087
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-B4
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -75.7887051269519
  20
 39.239130434782616
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-B5
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -75.74125784961161
  20
 39.34782608695652
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-B6
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -75.693390202671
  20
 39.45652173913044
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-B7
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -75.64509938168233
  20
 39.56521739130435
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-B8
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -75.59638254439723
  20
 39.673913043478265
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-B9
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -75.54723681076656
  20
 39.78260869565217
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-BA
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -75.49765926294047
  20
 39.891304347826086
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-BB
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -75.44764694526839
  20
 40.0
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-BC
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -75.39719686429903
  20
 40.108695652173914
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-BD
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -75.3463059887804
  20
 40.21739130434783
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-BE
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -75.29497124965978
  20
 40.32608695652174
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-BF
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -75.2431895400837
  20
 40.434782608695656
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-C0
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -75.19095771539806
  20
 40.54347826086957
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-C1
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -75.13827259314793
  20
 40.652173913043484
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-C2
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -75.08513095307775
  20
 40.7608695652174
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-C3
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -75.03152953713119
  20
 40.869565217391305
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-C4
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -74.97746504945124
  20
 40.97826086956522
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-C5
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -74.92293415638012
  20
 41.08695652173913
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-C6
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -74.8679334864594
  20
 41.19565217391304
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-C7
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -74.8124596304299
  20
 41.30434782608695
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-C8
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -74.75650842485672
  20
 41.41304347826087
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-C9
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -74.70007520344973
  20
 41.52173913043478
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-CA
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -74.64315653352041
  20
 41.630434782608695
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-CB
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -74.58574890638397
  20
 41.73913043478261
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-CC
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -74.52784871207994
  20
 41.84782608695652
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-CD
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -74.46945223937215
  20
 41.95652173913044
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-CE
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -74.41055567574871
  20
 42.06521739130435
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-CF
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -74.35115510742204
  20
 42.17391304347826
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-D0
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -74.29124651932891
  20
 42.28260869565217
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-D1
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -74.23082579513029
  20
 42.391304347826086
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-D2
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -74.16988871721156
  20
 42.5
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-D3
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -74.10843096668233
  20
 42.608695652173914
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-D4
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -74.04644812337656
  20
 42.71739130434783
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-D5
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -73.98393566585247
  20
 42.82608695652174
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-D6
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -73.92088897139261
  20
 42.934782608695656
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-D7
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -73.85730331600384
  20
 43.04347826086957
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-D8
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -73.79317387441728
  20
 43.152173913043484
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-D9
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -73.72849572008838
  20
 43.2608695652174
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-DA
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -73.6632638251969
  20
 43.36956521739131
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-DB
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -73.59747306064692
  20
 43.478260869565226
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-DC
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -73.53111819606676
  20
 43.58695652173913
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-DD
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -73.46419389980908
  20
 43.69565217391305
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-DE
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -73.39669473895086
  20
 43.80434782608696
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-DF
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -73.32861517929334
  20
 43.91304347826087
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-E0
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -73.2599495853621
  20
 44.02173913043478
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-E1
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -73.19069222040699
  20
 44.130434782608695
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-E2
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -73.1208372464022
  20
 44.23913043478261
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-E3
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -73.0503787240462
  20
 44.34782608695652
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-E4
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -72.97931061276174
  20
 44.45652173913044
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-E5
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -72.90762677069591
  20
 44.56521739130435
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-E6
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -72.8353209547201
  20
 44.673913043478265
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-E7
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -72.76238682042998
  20
 44.78260869565218
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-E8
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -72.68881792214553
  20
 44.891304347826086
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-E9
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -72.61460771291104
  20
 45.0
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-EA
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -72.53974954449508
  20
 45.108695652173914
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-EB
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -72.46423666739057
  20
 45.21739130434782
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-EC
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -72.38806223081465
  20
 45.326086956521735
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-ED
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -72.31121928270888
  20
 45.43478260869565
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-EE
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -72.233700769739
  20
 45.54347826086956
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-EF
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -72.15549953729513
  20
 45.65217391304348
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-F0
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -72.07660820095401
  20
 45.76086956521739
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-F1
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -71.99701646502314
  20
 45.86956521739131
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-F2
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -71.91671584905309
  20
 45.978260869565226
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-F3
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -71.83569888890669
  20
 46.08695652173914
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-F4
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -71.75395780433516
  20
 46.195652173913054
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-F5
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -71.67148449897822
  20
 46.30434782608696
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-F6
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -71.58827056036394
  20
 46.413043478260875
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-F7
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -71.50430725990891
  20
 46.52173913043479
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-F8
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -71.41958555291811
  20
 46.630434782608695
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-F9
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -71.33409607858493
  20
 46.73913043478261
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-FA
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -71.24782915999126
  20
 46.84782608695652
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-FB
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -71.16077480410738
  20
 46.95652173913044
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-FC
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -71.072922701792
  20
 47.06521739130435
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-FD
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -70.9842622277923
  20
 47.173913043478265
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-FE
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -70.89478244074385
  20
 47.28260869565218
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-FF
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -70.80447208317071
  20
 47.39130434782609
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-100
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -70.71331958148531
  20
 47.50000000000001
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-101
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -70.62131304598857
  20
 47.608695652173914
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-102
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -70.52844027086982
  20
 47.71739130434783
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-103
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -70.4346887342068
  20
 47.82608695652174
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-104
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -70.34004559796576
  20
 47.93478260869565
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-105
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -70.24449770800128
  20
 48.04347826086956
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-106
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -70.14803159405645
  20
 48.15217391304348
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-107
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -70.0506334697628
  20
 48.26086956521739
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-108
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -69.95228923264023
  20
 48.369565217391305
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-109
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -69.85298446409715
  20
 48.47826086956522
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-10A
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -69.75270442943034
  20
 48.58695652173913
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-10B
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -69.65143407782504
  20
 48.69565217391305
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-10C
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -69.54915804235496
  20
 48.80434782608696
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-10D
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -69.44586063998219
  20
 48.913043478260875
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-10E
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -69.34152587155728
  20
 49.02173913043478
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-10F
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -69.23613742181921
  20
 49.130434782608695
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-110
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -69.12967641918668
  20
 49.23913043478261
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-111
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -69.0221199819052
  20
 49.34782608695652
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-112
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -68.9134508091701
  20
 49.45652173913044
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-113
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -68.80365091927642
  20
 49.56521739130435
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-114
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -68.69270124801666
  20
 49.673913043478265
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-115
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -68.58058164868073
  20
 49.78260869565218
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-116
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -68.46727089205599
  20
 49.89130434782609
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-117
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -68.35274666642721
  20
 50.00000000000001
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-118
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -68.2369855775766
  20
 50.10869565217392
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-119
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -68.11996314878381
  20
 50.217391304347835
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-11A
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -68.00165382082594
  20
 50.32608695652174
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-11B
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -67.88203095197744
  20
 50.434782608695656
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-11C
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -67.76106681801028
  20
 50.54347826086957
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-11D
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -67.63873261219383
  20
 50.65217391304348
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-11E
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -67.51499844529489
  20
 50.76086956521739
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-11F
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -67.38983334557769
  20
 50.869565217391305
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-120
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -67.26320525880388
  20
 50.97826086956522
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-121
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -67.13508104823256
  20
 51.08695652173913
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-122
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -67.00542649462028
  20
 51.19565217391305
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-123
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -66.87420629622098
  20
 51.30434782608696
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-124
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -66.74138406878603
  20
 51.413043478260875
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-125
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -66.60692234556429
  20
 51.52173913043479
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-126
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -66.47078257730197
  20
 51.6304347826087
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-127
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -66.3329250851166
  20
 51.73913043478261
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-128
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -66.19329897309717
  20
 51.84782608695652
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-129
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -66.05185561623975
  20
 51.95652173913044
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-12A
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -65.90855117059019
  20
 52.065217391304344
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-12B
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -65.7633377684555
  20
 52.17391304347826
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-12C
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -65.61616351840387
  20
 52.28260869565217
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-12D
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -65.46697250526455
  20
 52.391304347826086
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-12E
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -65.31570479012802
  20
 52.5
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-12F
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -65.16229641034585
  20
 52.608695652173914
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-130
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -65.00667937953075
  20
 52.71739130434783
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-131
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -64.8487816875566
  20
 52.82608695652175
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-132
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -64.6885273005584
  20
 52.93478260869566
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-133
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -64.52583616093234
  20
 53.04347826086957
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-134
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -64.36062418733566
  20
 53.152173913043484
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-135
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -64.19280327468682
  20
 53.2608695652174
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-136
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -64.02228129416542
  20
 53.369565217391305
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-137
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -63.84896209321214
  20
 53.47826086956522
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-138
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -63.672745495528865
  20
 53.58695652173913
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-139
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -63.49351035615861
  20
 53.69565217391305
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-13A
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -63.31112974078578
  20
 53.80434782608696
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-13B
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -63.125484665646084
  20
 53.913043478260875
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-13C
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -62.93644008727237
  20
 54.02173913043479
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-13D
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -62.74384486524853
  20
 54.1304347826087
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-13E
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -62.547531762209445
  20
 54.239130434782616
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-13F
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -62.34731744384102
  20
 54.34782608695653
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-140
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -62.143002478880156
  20
 54.456521739130444
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-141
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -61.93437133911479
  20
 54.565217391304344
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-142
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -61.72119239938381
  20
 54.67391304347826
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-143
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -61.503217937577176
  20
 54.78260869565217
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-144
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -61.28018413463583
  20
 54.891304347826086
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-145
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -61.05178056974316
  20
 55.0
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-146
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -60.81766348343423
  20
 55.108695652173914
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-147
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -60.57748047787846
  20
 55.21739130434783
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-148
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -60.330810719874194
  20
 55.32608695652174
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-149
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -60.07716443494486
  20
 55.434782608695656
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-14A
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -59.81598290733906
  20
 55.54347826086957
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-14B
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -59.54663848003049
  20
 55.652173913043484
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-14C
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -59.26843455471795
  20
 55.7608695652174
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-14D
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -58.98057722594001
  20
 55.86956521739131
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-14E
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -58.682099472396715
  20
 55.97826086956522
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-14F
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -58.371922505495576
  20
 56.08695652173913
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-150
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -58.04866952049521
  20
 56.19565217391305
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-151
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -57.71064891561162
  20
 56.30434782608696
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-152
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -57.355854292018236
  20
 56.413043478260875
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-153
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -56.981782426847516
  20
 56.52173913043479
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-154
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -56.58525168116293
  20
 56.6304347826087
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-155
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -56.16186319358293
  20
 56.739130434782616
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-156
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -55.70565451812407
  20
 56.84782608695653
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-157
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -55.20825459654851
  20
 56.956521739130444
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-158
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -54.656525451969586
  20
 57.06521739130436
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-159
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -54.028581959321755
  20
 57.17391304347827
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-15A
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -53.281623479538496
  20
 57.28260869565217
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-15B
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -52.30556940350764
  20
 57.391304347826086
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-15C
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 -50.0
  20
 57.5
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-15D
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
--50.0
- 20
-57.5
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-15E
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 50.0
  20
 57.5
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-15F
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
- 10
-50.0
- 20
-57.5
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-160
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 52.30556940350764
  20
 57.391304347826086
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-161
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 53.281623479538496
  20
 57.28260869565217
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-162
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 54.028581959321755
  20
 57.17391304347827
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-163
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 54.656525451969586
  20
 57.06521739130436
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-164
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 55.20825459654851
  20
 56.956521739130444
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-165
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 55.70565451812407
  20
 56.84782608695653
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-166
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 56.16186319358293
  20
 56.739130434782616
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-167
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 56.58525168116293
  20
 56.6304347826087
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-168
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 56.981782426847516
  20
 56.52173913043479
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-169
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 57.355854292018236
  20
 56.413043478260875
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-16A
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 57.71064891561162
  20
 56.30434782608696
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-16B
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 58.04866952049521
  20
 56.19565217391305
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-16C
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 58.371922505495576
  20
 56.08695652173913
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-16D
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 58.682099472396715
  20
 55.97826086956522
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-16E
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 58.98057722594001
  20
 55.86956521739131
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-16F
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 59.26843455471795
  20
 55.7608695652174
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-170
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 59.54663848003049
  20
 55.652173913043484
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-171
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 59.81598290733906
  20
 55.54347826086957
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-172
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 60.07716443494486
  20
 55.434782608695656
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-173
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 60.330810719874194
  20
 55.32608695652174
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-174
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 60.57748047787846
  20
 55.21739130434783
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-175
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 60.81766348343423
  20
 55.108695652173914
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-176
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 61.05178056974316
  20
 55.0
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-177
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 61.28018413463583
  20
 54.891304347826086
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-178
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 61.503217937577176
  20
 54.78260869565217
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-179
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 61.72119239938381
  20
 54.67391304347826
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-17A
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 61.93437133911479
  20
 54.565217391304344
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-17B
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 62.143002478880156
  20
 54.456521739130444
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-17C
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 62.34731744384102
  20
 54.34782608695653
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-17D
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 62.547531762209445
  20
 54.239130434782616
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-17E
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 62.74384486524853
  20
 54.1304347826087
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-17F
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 62.93644008727237
  20
 54.02173913043479
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-180
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 63.125484665646084
  20
 53.913043478260875
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-181
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 63.31112974078578
  20
 53.80434782608696
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-182
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 63.49351035615861
  20
 53.69565217391305
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-183
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 63.672745495528865
  20
 53.58695652173913
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-184
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 63.84896209321214
  20
 53.47826086956522
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-185
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 64.02228129416542
  20
 53.369565217391305
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-186
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 64.19280327468682
  20
 53.2608695652174
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-187
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 64.36062418733566
  20
 53.152173913043484
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-188
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 64.52583616093234
  20
 53.04347826086957
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-189
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 64.6885273005584
  20
 52.93478260869566
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-18A
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 64.8487816875566
  20
 52.82608695652175
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-18B
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 65.00667937953075
  20
 52.71739130434783
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-18C
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 65.16229641034585
  20
 52.608695652173914
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-18D
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 65.31570479012802
  20
 52.5
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-18E
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 65.46697250526455
  20
 52.391304347826086
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-18F
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 65.61616351840387
  20
 52.28260869565217
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-190
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 65.7633377684555
  20
 52.17391304347826
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-191
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 65.90855117059019
  20
 52.065217391304344
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-192
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 66.05185561623975
  20
 51.95652173913044
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-193
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 66.19329897309717
  20
 51.84782608695652
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-194
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 66.3329250851166
  20
 51.73913043478261
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-195
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 66.47078257730197
  20
 51.6304347826087
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-196
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 66.60692234556429
  20
 51.52173913043479
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-197
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 66.74138406878603
  20
 51.413043478260875
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-198
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 66.87420629622098
  20
 51.30434782608696
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-199
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 67.00542649462028
  20
 51.19565217391305
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-19A
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 67.13508104823256
  20
 51.08695652173913
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-19B
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 67.26320525880388
  20
 50.97826086956522
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-19C
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 67.38983334557769
  20
 50.869565217391305
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-19D
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 67.51499844529489
  20
 50.76086956521739
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-19E
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 67.63873261219383
  20
 50.65217391304348
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-19F
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 67.76106681801028
  20
 50.54347826086957
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1A0
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 67.88203095197744
  20
 50.434782608695656
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1A1
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 68.00165382082594
  20
 50.32608695652174
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1A2
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 68.11996314878382
  20
 50.217391304347835
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1A3
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 68.2369855775766
  20
 50.10869565217392
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1A4
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 68.35274666642721
  20
 50.00000000000001
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1A5
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 68.46727089205599
  20
 49.89130434782609
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1A6
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 68.58058164868073
  20
 49.78260869565218
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1A7
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 68.69270124801666
  20
 49.673913043478265
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1A8
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 68.80365091927642
  20
 49.56521739130435
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1A9
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 68.9134508091701
  20
 49.45652173913044
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1AA
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 69.0221199819052
  20
 49.34782608695652
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1AB
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 69.1296764191867
  20
 49.23913043478261
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1AC
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 69.23613742181921
  20
 49.130434782608695
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1AD
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 69.34152587155728
  20
 49.02173913043478
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1AE
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 69.44586063998219
  20
 48.913043478260875
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1AF
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 69.54915804235496
  20
 48.80434782608696
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1B0
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 69.65143407782504
  20
 48.69565217391305
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1B1
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 69.75270442943034
  20
 48.58695652173913
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1B2
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 69.85298446409715
  20
 48.47826086956522
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1B3
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 69.95228923264023
  20
 48.369565217391305
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1B4
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 70.0506334697628
  20
 48.26086956521739
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1B5
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 70.14803159405645
  20
 48.15217391304348
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1B6
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 70.24449770800128
  20
 48.04347826086956
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1B7
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 70.34004559796576
  20
 47.93478260869565
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1B8
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 70.43468873420682
  20
 47.82608695652174
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1B9
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 70.52844027086982
  20
 47.71739130434783
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1BA
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 70.62131304598859
  20
 47.608695652173914
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1BB
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 70.71331958148531
  20
 47.50000000000001
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1BC
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 70.80447208317071
  20
 47.39130434782609
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1BD
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 70.89478244074385
  20
 47.28260869565218
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1BE
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 70.9842622277923
  20
 47.173913043478265
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1BF
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 71.07292270179201
  20
 47.06521739130435
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1C0
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 71.16077480410738
  20
 46.95652173913044
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1C1
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 71.24782915999126
  20
 46.84782608695652
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1C2
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 71.33409607858493
  20
 46.73913043478261
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1C3
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 71.41958555291811
  20
 46.630434782608695
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1C4
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 71.50430725990891
  20
 46.52173913043479
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1C5
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 71.58827056036395
  20
 46.413043478260875
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1C6
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 71.67148449897822
  20
 46.30434782608696
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1C7
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 71.75395780433516
  20
 46.195652173913054
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1C8
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 71.83569888890669
  20
 46.08695652173914
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1C9
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 71.91671584905309
  20
 45.978260869565226
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1CA
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 71.99701646502314
  20
 45.86956521739131
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1CB
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 72.07660820095401
  20
 45.76086956521739
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1CC
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 72.15549953729513
  20
 45.65217391304348
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1CD
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 72.233700769739
  20
 45.54347826086956
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1CE
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 72.31121928270888
  20
 45.43478260869565
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1CF
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 72.38806223081465
  20
 45.326086956521735
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1D0
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 72.46423666739057
  20
 45.21739130434782
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1D1
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 72.53974954449508
  20
 45.108695652173914
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1D2
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 72.61460771291104
  20
 45.0
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1D3
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 72.68881792214553
  20
 44.891304347826086
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1D4
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 72.76238682042998
  20
 44.78260869565218
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1D5
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 72.8353209547201
  20
 44.673913043478265
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1D6
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 72.90762677069591
  20
 44.56521739130435
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1D7
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 72.97931061276174
  20
 44.45652173913044
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1D8
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 73.0503787240462
  20
 44.34782608695652
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1D9
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 73.1208372464022
  20
 44.23913043478261
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1DA
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 73.19069222040699
  20
 44.130434782608695
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1DB
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 73.2599495853621
  20
 44.02173913043478
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1DC
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 73.32861517929334
  20
 43.91304347826087
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1DD
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 73.39669473895086
  20
 43.80434782608696
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1DE
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 73.46419389980909
  20
 43.69565217391305
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1DF
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 73.53111819606676
  20
 43.58695652173913
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1E0
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 73.59747306064692
  20
 43.478260869565226
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1E1
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 73.6632638251969
  20
 43.36956521739131
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1E2
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 73.72849572008838
  20
 43.2608695652174
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1E3
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 73.79317387441728
  20
 43.152173913043484
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1E4
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 73.85730331600384
  20
 43.04347826086957
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1E5
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 73.92088897139261
  20
 42.934782608695656
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1E6
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 73.98393566585247
  20
 42.82608695652174
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1E7
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 74.04644812337656
  20
 42.71739130434783
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1E8
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 74.10843096668233
  20
 42.608695652173914
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1E9
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 74.16988871721156
  20
 42.5
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1EA
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 74.2308257951303
  20
 42.391304347826086
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1EB
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 74.2912465193289
  20
 42.28260869565217
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1EC
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 74.35115510742204
  20
 42.17391304347826
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1ED
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 74.41055567574871
  20
 42.06521739130435
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1EE
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 74.46945223937215
  20
 41.95652173913044
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1EF
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 74.52784871207994
  20
 41.84782608695652
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1F0
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 74.58574890638397
  20
 41.73913043478261
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1F1
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 74.64315653352041
  20
 41.630434782608695
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1F2
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 74.70007520344973
  20
 41.52173913043478
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1F3
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 74.75650842485672
  20
 41.41304347826087
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1F4
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 74.8124596304299
  20
 41.30434782608695
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1F5
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 74.8679334864594
  20
 41.19565217391304
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1F6
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 74.92293415638014
  20
 41.08695652173913
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1F7
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 74.97746504945124
  20
 40.97826086956522
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1F8
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 75.03152953713119
  20
 40.869565217391305
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1F9
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 75.08513095307774
  20
 40.7608695652174
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1FA
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 75.13827259314793
  20
 40.652173913043484
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1FB
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 75.19095771539806
  20
 40.54347826086957
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1FC
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 75.2431895400837
  20
 40.434782608695656
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1FD
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 75.29497124965977
  20
 40.32608695652174
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1FE
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 75.3463059887804
  20
 40.21739130434783
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-1FF
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 75.39719686429903
  20
 40.108695652173914
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-200
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 75.44764694526839
  20
 40.0
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-201
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 75.49765926294047
  20
 39.891304347826086
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-202
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 75.54723681076656
  20
 39.78260869565217
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-203
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 75.59638254439724
  20
 39.673913043478265
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-204
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 75.64509938168234
  20
 39.56521739130435
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-205
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 75.693390202671
  20
 39.45652173913044
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-206
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 75.74125784961161
  20
 39.34782608695652
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-207
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 75.7887051269519
  20
 39.239130434782616
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-208
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 75.83573480133883
  20
 39.1304347826087
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-209
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 75.88234960161867
  20
 39.02173913043478
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-20A
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 75.92855221883693
  20
 38.91304347826087
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-20B
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 75.97434530623846
  20
 38.80434782608695
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-20C
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 76.01973147926736
  20
 38.69565217391304
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-20D
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 76.064713315567
  20
 38.586956521739125
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-20E
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 76.10929335498008
  20
 38.47826086956522
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-20F
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 76.15347409954852
  20
 38.369565217391305
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-210
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 76.19725801351356
  20
 38.26086956521739
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-211
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 76.24064752331572
  20
 38.15217391304348
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-212
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 76.28364501759478
  20
 38.04347826086956
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-213
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 76.32625284718983
  20
 37.934782608695656
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-214
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 76.36847332513926
  20
 37.82608695652174
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-215
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 76.41030872668065
  20
 37.71739130434783
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-216
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 76.45176128925098
  20
 37.608695652173914
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-217
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 76.49283321248642
  20
 37.5
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-218
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 76.53352665822246
  20
 37.391304347826086
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-219
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 76.5738437504939
  20
 37.28260869565217
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-21A
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 76.61378657553475
  20
 37.17391304347826
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-21B
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 76.65335718177838
  20
 37.06521739130435
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-21C
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 76.69255757985738
  20
 36.95652173913044
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-21D
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 76.73138974260365
  20
 36.84782608695652
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-21E
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 76.76985560504838
  20
 36.73913043478261
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-21F
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 76.80795706442203
  20
 36.630434782608695
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-220
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 76.84569598015435
  20
 36.52173913043479
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-221
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 76.88307417387433
  20
 36.413043478260875
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-222
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 76.92009342941033
  20
 36.30434782608696
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-223
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 76.95675549278991
  20
 36.19565217391305
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-224
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 76.99306209334125
  20
 36.08695652173913
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-225
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 77.02901534805851
  20
 35.97826086956522
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-226
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 77.0646171692779
  20
 35.869565217391305
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-227
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 77.09986929628845
  20
 35.7608695652174
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-228
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 77.13477344447017
  20
 35.652173913043484
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-229
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 77.16933130529407
  20
 35.54347826086956
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-22A
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 77.20354454632209
  20
 35.43478260869565
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-22B
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 77.2374148112072
  20
 35.326086956521735
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-22C
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 77.27094371969338
  20
 35.21739130434783
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-22D
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 77.30413286761552
  20
 35.108695652173914
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-22E
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 77.33698382689957
  20
 35.0
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-22F
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 77.36949814556242
  20
 34.891304347826086
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-230
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 77.40167734771197
  20
 34.78260869565217
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-231
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 77.4335229335471
  20
 34.67391304347826
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-232
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 77.46503637935767
  20
 34.565217391304344
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-233
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 77.49621913752453
  20
 34.45652173913043
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-234
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 77.52707263651952
  20
 34.34782608695652
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-235
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 77.55759828090547
  20
 34.23913043478261
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-236
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 77.58779745133617
  20
 34.130434782608695
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-237
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 77.61767150455643
  20
 34.02173913043478
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-238
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 77.64722177340204
  20
 33.91304347826087
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-239
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 77.67644956679973
  20
 33.80434782608696
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-23A
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 77.70535616976728
  20
 33.69565217391305
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-23B
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 77.73394284341343
  20
 33.58695652173913
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-23C
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 77.76221082493791
  20
 33.47826086956522
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-23D
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 77.79016132763141
  20
 33.369565217391305
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-23E
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 77.81779554087564
  20
 33.26086956521739
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-23F
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 77.84511463014329
  20
 33.15217391304348
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-240
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 77.872119736998
  20
 33.04347826086957
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-241
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 77.89881197909446
  20
 32.934782608695656
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-242
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 77.9251924501783
  20
 32.82608695652174
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-243
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 77.95126222008615
  20
 32.71739130434783
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-244
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 77.97702233474561
  20
 32.608695652173914
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-245
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.0024738161753
  20
 32.50000000000001
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-246
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.02761766248477
  20
 32.39130434782609
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-247
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.05245484787464
  20
 32.28260869565218
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-248
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.07698628311734
  20
 32.173913043478265
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-249
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.10121284374385
  20
 32.065217391304344
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-24A
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.12513544722187
  20
 31.956521739130434
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-24B
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.1487549761515
  20
 31.84782608695652
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-24C
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.1720722772299
  20
 31.739130434782613
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-24D
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.19508816125128
  20
 31.6304347826087
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-24E
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.21780340310684
  20
 31.521739130434785
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-24F
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.24021874178487
  20
 31.41304347826087
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-250
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.26233488037066
  20
 31.304347826086957
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-251
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.28415248604654
  20
 31.195652173913043
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-252
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.30567219009188
  20
 31.086956521739133
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-253
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.3268945878831
  20
 30.97826086956522
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-254
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.34782023889365
  20
 30.869565217391305
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-255
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.368449666694
  20
 30.76086956521739
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-256
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.38878335895167
  20
 30.652173913043477
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-257
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.40882176743122
  20
 30.543478260869563
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-258
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.42856530799425
  20
 30.43478260869565
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-259
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.44801436059937
  20
 30.326086956521742
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-25A
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.46716926930225
  20
 30.217391304347828
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-25B
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.48603034225559
  20
 30.108695652173914
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-25C
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.50459785170914
  20
 30.0
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-25D
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.52287203400965
  20
 29.891304347826086
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-25E
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.54085307245866
  20
 29.78260869565218
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-25F
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.55854093673479
  20
 29.67391304347826
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-260
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.5759356778351
  20
 29.565217391304348
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-261
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.59303731637546
  20
 29.456521739130434
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-262
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.609845785547
  20
 29.34782608695652
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-263
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.62636093111612
  20
 29.239130434782606
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-264
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.64258251142455
  20
 29.130434782608692
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-265
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.65851019738922
  20
 29.021739130434785
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-266
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.67414357250239
  20
 28.91304347826087
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-267
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.68948213283156
  20
 28.804347826086957
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-268
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.70452528701952
  20
 28.695652173913043
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-269
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.71927235628436
  20
 28.58695652173913
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-26A
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.7337225744194
  20
 28.47826086956522
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-26B
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.74787508779326
  20
 28.369565217391305
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-26C
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.76172895534982
  20
 28.26086956521739
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-26D
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.7752831079818
  20
 28.15217391304348
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-26E
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.7885361401438
  20
 28.043478260869566
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-26F
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.8014866822048
  20
 27.934782608695652
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-270
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.81413317335321
  20
 27.82608695652174
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-271
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.82647380743468
  20
 27.717391304347824
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-272
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.8385065329519
  20
 27.60869565217391
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-273
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.85022905306477
  20
 27.5
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-274
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.86163882559029
  20
 27.391304347826086
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-275
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.87273306300266
  20
 27.282608695652172
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-276
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.88350873243314
  20
 27.17391304347826
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-277
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.89396249914081
  20
 27.065217391304348
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-278
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.90409041079067
  20
 26.956521739130434
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-279
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.9138882523136
  20
 26.847826086956523
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-27A
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.92335116290465
  20
 26.73913043478261
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-27B
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.93247356166243
  20
 26.630434782608695
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-27C
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.94124914758916
  20
 26.52173913043478
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-27D
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.94967089959061
  20
 26.41304347826087
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-27E
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.95773089274876
  20
 26.304347826086957
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-27F
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.96541982012386
  20
 26.195652173913043
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-280
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.97272690579096
  20
 26.08695652173913
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-281
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.9796392078888
  20
 25.978260869565215
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-282
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.98614157914035
  20
 25.8695652173913
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-283
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.99221583991475
  20
 25.76086956521739
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-284
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 78.99783939430462
  20
 25.652173913043477
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-285
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 79.00298314843634
  20
 25.543478260869563
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-286
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 79.00760946343573
  20
 25.434782608695652
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-287
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 79.01166552988053
  20
 25.32608695652174
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-288
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 79.0150717981151
  20
 25.217391304347824
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-289
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 79.01768766472217
  20
 25.108695652173914
- 30
-0.0
- 70
-32
-  0
-VERTEX
-  5
-28A
-330
-17
-100
-AcDbEntity
-  8
-0
-100
-AcDbVertex
-100
-AcDb3dPolylineVertex
  10
 79.01911095544551
  20
 25.0
- 30
-0.0
- 70
-32
-  0
-SEQEND
-  5
-30
-330
-2F
-100
-AcDbEntity
-  8
-0
   0
 LINE
   5
-28B
+30
 330
 17
 100
@@ -16313,7 +5455,7 @@ CREATED_BY_EZDXF
   3
 WRITTEN_BY_EZDXF
 350
-28E
+33
   0
 DICTIONARYVAR
   5
@@ -16325,11 +5467,11 @@ DictionaryVariables
 280
 0
   1
-1.4.3 @ 2026-01-14T12:03:48.420867+00:00
+1.4.3 @ 2026-01-14T12:07:17.533499+00:00
   0
 DICTIONARYVAR
   5
-28E
+33
 330
 2D
 100
@@ -16337,7 +5479,7 @@ DictionaryVariables
 280
 0
   1
-1.4.3 @ 2026-01-14T12:03:48.432425+00:00
+1.4.3 @ 2026-01-14T12:07:17.537763+00:00
   0
 ENDSEC
   0
