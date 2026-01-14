@@ -228,7 +228,7 @@ class IsotensoidProfile:
             filename: Output filename
             add_axis: If True, adds a centerline on the Z axis.
             use_spline: If True, uses SPLINE entity (smooth but maybe less compatible).
-                        If False, uses POLYLINE entity (standard compatibility).
+                        If False, uses 3D POLYLINE entity with PLINEGEN flag.
         """
         if self.z_coords is None:
             self.generate_profile()
@@ -243,10 +243,12 @@ class IsotensoidProfile:
             msp.add_spline(points)
             print("Exported as SPLINE")
         else:
-            # Use 2D Polyline with PLINEGEN flag (128) for continuous linetype generation
-            # We use add_polyline2d (legacy POLYLINE) which accepts 3-tuples (z is elevation or ignored/projected)
-            msp.add_polyline3d(points, dxfattribs={'flags': 128})
-            print("Exported as POLYLINE (2D with PLINEGEN)")
+            # use_spline=False means we export as a POLYLINE.
+            # We use add_polyline3d to satisfy the software requirement for a "3D Polyline".
+            # We pass flags = 136 (128 for PLINEGEN + 8 for 3D Polyline).
+            # This ensures both the entity type and the flag you requested are present.
+            msp.add_polyline3d(points, dxfattribs={'flags': 136})
+            print("Exported as POLYLINE (3D with PLINEGEN, flag=136)")
 
         # Add centerline
         if add_axis:
