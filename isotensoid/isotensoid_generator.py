@@ -245,7 +245,7 @@ class IsotensoidProfile:
         else:
             # Use 2D Polyline with PLINEGEN flag (128) for continuous linetype generation
             # We use add_polyline2d (legacy POLYLINE) which accepts 3-tuples (z is elevation or ignored/projected)
-            msp.add_polyline2d(points, dxfattribs={'flags': 128})
+            msp.add_polyline3d(points, dxfattribs={'flags': 128})
             print("Exported as POLYLINE (2D with PLINEGEN)")
 
         # Add centerline
