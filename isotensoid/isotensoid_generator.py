@@ -143,7 +143,7 @@ class IsotensoidProfile:
         plt.axhline(self.r0, color='r', linestyle='--', alpha=0.5, label=f'Opening $r_0$')
         plt.axhline(-self.r0, color='r', linestyle='--', alpha=0.5)
 
-        plt.title(f"Isotensoid Profile\n$a={self.a:.4f}$ (Toroidal Condition: {abs(self.a + self.rho0 ** 2) < 1e-9})")
+        plt.title(f"Isotensoid Profile\n$a={self.a:.4f}$ (Toroidal Condition: {abs(self.a + self.rho0 ** 2) < 1e-9}) \n Wind angle: {np.degrees(np.arcsin(dome.rho0)):.2f} degrees")
         plt.xlabel("Axial Position z [mm]")
         plt.ylabel("Radial Position r [mm]")
         plt.axis('equal')
@@ -176,7 +176,7 @@ def export_to_dxf(z_coords, r_coords, add_axis = False, filename='isotensoid_pro
 
 # --- Example Usage ---
 # We do not pass 'a', so it defaults to the Toroidal condition (-rho0^2)
-dome = IsotensoidProfile(R=115.0/2, r0=50.0/2, a=0)
+dome = IsotensoidProfile(R=115.0/2, r0=50.0/2)
 dome.plot_profile()
 
 # --- Usage ---
