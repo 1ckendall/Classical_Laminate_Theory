@@ -5,12 +5,17 @@ from scipy.integrate import solve_ivp
 from scipy.optimize import brentq
 import ezdxf
 from typing import Tuple, Optional
-import sys
 
 
 class IsotensoidProfile:
-    def __init__(self, R: float, r0: float, a: Optional[float] = None, cylinder_length: float = 0.0,
-                 num_domes: int = 2):
+    def __init__(
+        self,
+        R: float,
+        r0: float,
+        a: Optional[float] = None,
+        cylinder_length: float = 0.0,
+        num_domes: int = 2,
+    ):
         """
         Generates an isotensoid pressure vessel profile (single or double ended).
 
@@ -34,7 +39,7 @@ class IsotensoidProfile:
         # Determine load parameter 'a'
         if a is None:
             # Toroidal Condition (Geodesic winding matches cylinder)
-            self.a = -self.rho0 ** 2
+            self.a = -self.rho0**2
             self.condition_type = "Toroidal (Open-Ended)"
         else:
             self.a = float(a)
@@ -56,20 +61,20 @@ class IsotensoidProfile:
         Calculates (dr/dz)^2 based on the governing isotensoid equation.
         """
         # Check for Toroidal Condition to avoid 0/0 singularity at rho0
-        is_toroidal = np.isclose(self.a + self.rho0 ** 2, 0, atol=1e-9)
+        is_toroidal = np.isclose(self.a + self.rho0**2, 0, atol=1e-9)
 
         if is_toroidal:
             # Limit form as rho -> rho0 for toroidal case
             if np.isclose(rho, self.rho0, atol=1e-9):
                 return 1e9  # Infinite slope dr/dz means zero dz/dr
 
-            numerator = 1 - self.rho0 ** 2
-            denominator = rho ** 2 * (rho ** 2 - self.rho0 ** 2)
+            numerator = 1 - self.rho0**2
+            denominator = rho**2 * (rho**2 - self.rho0**2)
             fraction = numerator / denominator
         else:
             # Standard General Equation
-            numerator = (self.a + 1) ** 2 * (rho ** 2 - self.rho0 ** 2)
-            denominator = rho ** 2 * (self.a + rho ** 2) ** 2 * (1 - self.rho0 ** 2)
+            numerator = (self.a + 1) ** 2 * (rho**2 - self.rho0**2)
+            denominator = rho**2 * (self.a + rho**2) ** 2 * (1 - self.rho0**2)
 
             if np.isclose(denominator, 0, atol=1e-9):
                 return 1e9
@@ -103,7 +108,7 @@ class IsotensoidProfile:
         """
         # --- 1. Generate Single Dome Geometry ---
         # Determine starting point
-        if np.isclose(self.a + self.rho0 ** 2, 0, atol=1e-9):
+        if np.isclose(self.a + self.rho0**2, 0, atol=1e-9):
             rho_start = self.rho0
         else:
             # Find root for non-toroidal cases
@@ -124,8 +129,13 @@ class IsotensoidProfile:
         z0 = [0.0]
 
         sol = solve_ivp(
-            self._ode_func, t_span, z0,
-            method='RK45', rtol=1e-6, atol=1e-9, dense_output=True
+            self._ode_func,
+            t_span,
+            z0,
+            method="RK45",
+            rtol=1e-6,
+            atol=1e-9,
+            dense_output=True,
         )
 
         rho_smooth = np.linspace(rho_start, 1.0, num_points)
@@ -198,30 +208,45 @@ class IsotensoidProfile:
         plt.figure(figsize=(12, 6))
 
         # 1. Plot Full Vessel
-        plt.plot(z, r, 'b-', linewidth=2, label='Vessel Profile')
-        plt.plot(z, -r, 'b-', linewidth=2)
+        plt.plot(z, r, "b-", linewidth=2, label="Vessel Profile")
+        plt.plot(z, -r, "b-", linewidth=2)
 
         # 2. Reference Lines
-        plt.axhline(self.r0, color='r', linestyle=':', alpha=0.5, label=f'Opening $r_0$ ({self.r0}mm)')
-        plt.axhline(-self.r0, color='r', linestyle=':', alpha=0.5)
+        plt.axhline(
+            self.r0,
+            color="r",
+            linestyle=":",
+            alpha=0.5,
+            label=f"Opening $r_0$ ({self.r0}mm)",
+        )
+        plt.axhline(-self.r0, color="r", linestyle=":", alpha=0.5)
 
-        plt.axvline(0, color='k', linestyle='-.', alpha=0.3, label='Center')
+        plt.axvline(0, color="k", linestyle="-.", alpha=0.3, label="Center")
         if self.L_cyl > 0 and self.num_domes == 2:
-            plt.axvline(self.L_cyl / 2, color='g', linestyle=':', alpha=0.3, label='Tan Line')
-            plt.axvline(-self.L_cyl / 2, color='g', linestyle=':', alpha=0.3)
+            plt.axvline(
+                self.L_cyl / 2, color="g", linestyle=":", alpha=0.3, label="Tan Line"
+            )
+            plt.axvline(-self.L_cyl / 2, color="g", linestyle=":", alpha=0.3)
 
         # 3. Annotations
-        plt.title(f"Isotensoid Vessel: {self.condition_type}\n"
-                  f"D={2 * self.R}mm, L_cyl={self.L_cyl}mm, Config={self.num_domes} Dome(s)")
+        plt.title(
+            f"Isotensoid Vessel: {self.condition_type}\n"
+            f"D={2 * self.R}mm, L_cyl={self.L_cyl}mm, Config={self.num_domes} Dome(s)"
+        )
         plt.xlabel("Axial Position z [mm]")
         plt.ylabel("Radial Position r [mm]")
-        plt.axis('equal')
-        plt.grid(True, which='both', alpha=0.6)
-        plt.legend(loc='lower right')
+        plt.axis("equal")
+        plt.grid(True, which="both", alpha=0.6)
+        plt.legend(loc="lower right")
         plt.tight_layout()
         plt.show()
 
-    def export_to_dxf(self, filename: str = 'isotensoid_profile.dxf', add_axis: bool = False, use_spline: bool = False):
+    def export_to_dxf(
+        self,
+        filename: str = "isotensoid_profile.dxf",
+        add_axis: bool = False,
+        use_spline: bool = False,
+    ):
         """
         Exports the profile to a DXF.
 
@@ -234,7 +259,7 @@ class IsotensoidProfile:
         if self.z_coords is None:
             self.generate_profile()
 
-        doc = ezdxf.new('R2010')
+        doc = ezdxf.new("R2010")
         msp = doc.modelspace()
 
         # Clean Data (Remove duplicates at seams) for Polyline
@@ -256,7 +281,9 @@ class IsotensoidProfile:
 
         if use_spline:
             # SPLINE uses raw 3D points
-            points = [(float(z), float(r), 0.0) for z, r in zip(self.z_coords, self.r_coords)]
+            points = [
+                (float(z), float(r), 0.0) for z, r in zip(self.z_coords, self.r_coords)
+            ]
             msp.add_spline(points)
             print("Exported as SPLINE")
         else:
@@ -264,9 +291,7 @@ class IsotensoidProfile:
             # Maps Z coords -> X axis, R coords -> Y axis
             # Strict 2D points (x, y) required for LWPOLYLINE
             polyline = msp.add_lwpolyline(
-                clean_points,
-                close=False,
-                dxfattribs={'layer': 'PROFILE', 'color': 1}
+                clean_points, close=False, dxfattribs={"layer": "PROFILE", "color": 1}
             )
 
             # Set Plinegen Flag (Bit 128)
@@ -285,7 +310,9 @@ class IsotensoidProfile:
             doc.saveas(filename)
             print(f"DXF saved to {filename}")
         except PermissionError:
-            print(f"ERROR: Could not save '{filename}'. The file might be open in another program.")
+            print(
+                f"ERROR: Could not save '{filename}'. The file might be open in another program."
+            )
 
     def export_1to1_pdf(self, filename: str = "isotensoid_1to1.pdf"):
         """Exports a calibrated 1:1 scale PDF of the full vessel."""
@@ -313,19 +340,19 @@ class IsotensoidProfile:
         ax = fig.add_axes([0, 0, 1, 1])
 
         # Plot Geometry
-        ax.plot(self.z_coords, self.r_coords, 'k-', linewidth=0.8)
-        ax.plot(self.z_coords, -self.r_coords, 'k-', linewidth=0.8)
+        ax.plot(self.z_coords, self.r_coords, "k-", linewidth=0.8)
+        ax.plot(self.z_coords, -self.r_coords, "k-", linewidth=0.8)
 
         # Centerline
-        ax.plot([z_min, z_max], [0, 0], 'k-.', linewidth=0.3)
+        ax.plot([z_min, z_max], [0, 0], "k-.", linewidth=0.3)
 
         # Opening Lines (Vertical)
         if self.num_domes == 2:
-            ax.plot([z_min, z_min], [self.r0, -self.r0], 'k-', linewidth=0.5)
+            ax.plot([z_min, z_min], [self.r0, -self.r0], "k-", linewidth=0.5)
         else:
-            ax.plot([z_min, z_min], [self.R, -self.R], 'k-', linewidth=0.5)
+            ax.plot([z_min, z_min], [self.R, -self.R], "k-", linewidth=0.5)
 
-        ax.plot([z_max, z_max], [self.r0, -self.r0], 'k-', linewidth=0.5)
+        ax.plot([z_max, z_max], [self.r0, -self.r0], "k-", linewidth=0.5)
 
         # Calibration Square
         center_z = (z_min + z_max) / 2
@@ -334,16 +361,20 @@ class IsotensoidProfile:
 
         rect_x = limit_left + 5
         rect_y = limit_bottom + 5
-        rect = Rectangle((rect_x, rect_y), 10, 10, linewidth=1, edgecolor='r', facecolor='none')
+        rect = Rectangle(
+            (rect_x, rect_y), 10, 10, linewidth=1, edgecolor="r", facecolor="none"
+        )
         ax.add_patch(rect)
-        ax.text(rect_x + 12, rect_y + 2, "10mm Scale", color='red', fontsize=8, va='center')
+        ax.text(
+            rect_x + 12, rect_y + 2, "10mm Scale", color="red", fontsize=8, va="center"
+        )
 
         # Set Limits
         ax.set_xlim(center_z - total_width_mm / 2, center_z + total_width_mm / 2)
         ax.set_ylim(-total_height_mm / 2, total_height_mm / 2)
 
-        ax.set_aspect('equal')
-        ax.axis('off')
+        ax.set_aspect("equal")
+        ax.axis("off")
 
         try:
             plt.savefig(filename, dpi=300)
@@ -357,7 +388,7 @@ class IsotensoidProfile:
 if __name__ == "__main__":
     # Example Parameters (mm)
     DIAMETER = 120.0
-    BOSS_DIAMETER = 75.0
+    BOSS_DIAMETER = 80.0
     CYL_LENGTH = 100.0
 
     # 1. Initialize
@@ -365,7 +396,7 @@ if __name__ == "__main__":
         R=DIAMETER / 2,
         r0=BOSS_DIAMETER / 2,
         cylinder_length=CYL_LENGTH,
-        num_domes=2  # Set to 2 for full pressure vessel
+        num_domes=2,  # Set to 2 for full pressure vessel
     )
 
     print(f"--- Pressure Vessel Parameters ---")

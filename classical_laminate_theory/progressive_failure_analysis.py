@@ -18,7 +18,8 @@ class ProgressiveFailureAnalysis:
             "load_factor": [],  # Total load magnitude
             "strain": [],
             "stress": [],
-            "damage_state": []  # Tracks how many plies have failed
+            "damage_state": [],  # Tracks how many plies have failed (count)
+            "failed_plies_details": [],  # Tracks SPECIFIC indices of failed plies
         }
 
         # Track unique indices of plies that have failed at least once
@@ -37,7 +38,11 @@ class ProgressiveFailureAnalysis:
 
         # Define groupings for readability
         FIBER_MODES = {FailureMode.FIBER_TENSION, FailureMode.FIBER_COMPRESSION}
-        MATRIX_MODES = {FailureMode.MATRIX_TENSION, FailureMode.MATRIX_COMPRESSION, FailureMode.SHEAR}
+        MATRIX_MODES = {
+            FailureMode.MATRIX_TENSION,
+            FailureMode.MATRIX_COMPRESSION,
+            FailureMode.SHEAR,
+        }
 
         for mode in failure_modes:
             # --- CASE A: FIBER FAILURE ---
@@ -110,7 +115,9 @@ class ProgressiveFailureAnalysis:
 
                 # CRITERIA A: All Plies Failed (New Criterion)
                 if len(self.failed_plies) == len(self.laminate.plies):
-                    print(f"  -> STOP: All {len(self.laminate.plies)} plies have experienced failure.")
+                    print(
+                        f"  -> STOP: All {len(self.laminate.plies)} plies have experienced failure."
+                    )
                     is_ruptured = True
                     break
 
@@ -141,6 +148,10 @@ class ProgressiveFailureAnalysis:
         self.history["load_factor"].append(current_load[0])
         self.history["strain"].append(self.laminate.global_strains[0, 0])
         self.history["stress"].append(sigma_x)
+        self.history["damage_state"].append(len(self.failed_plies))
+
+        # Save a COPY of the set (sorted list) so we can see exactly who failed when
+        self.history["failed_plies_details"].append(sorted(list(self.failed_plies)))
 
     def run_simulation(self, max_load, steps=100):
         """
@@ -201,20 +212,71 @@ class ProgressiveFailureAnalysis:
         print("--- Simulation Complete ---")
 
     def plot_curve(self, title_suffix=""):
-        """Visualizes the Stress-Strain response."""
+        """
+        Visualizes the Stress-Strain response.
+        Annotates points where new plies fail.
+        """
         strain_pct = np.array(self.history["strain"]) * 100
         stress_mpa = np.array(self.history["stress"]) / 1e6
+        failed_details = self.history["failed_plies_details"]
 
+        # Plot the main curve
         plt.plot(strain_pct, stress_mpa, linewidth=2, label=title_suffix)
+
+        # --- ANNOTATE FAILURE EVENTS ---
+        previous_failures = set()
+
+        # Iterate through history to find steps where the failure set changed
+        for i, current_failures_list in enumerate(failed_details):
+            current_failures = set(current_failures_list)
+
+            # Identify new failures in this step
+            new_failures = current_failures - previous_failures
+
+            if new_failures:
+                # Get coordinates for annotation
+                x_val = strain_pct[i]
+                y_val = stress_mpa[i]
+
+                # Convert 0-based index to 1-based ply numbers for display
+                ply_nums = [idx + 1 for idx in sorted(list(new_failures))]
+
+                # Create annotation text
+                label_text = f"Ply {ply_nums} Fail"
+
+                # Add marker at the failure point
+                plt.plot(x_val, y_val, 'ro', markersize=4)  # Red dot
+
+                # Add text annotation with arrow
+                # We alternate offset height slightly to avoid overlapping text if failures are close
+                offset_y = 20 if (i % 2 == 0) else -30
+
+                plt.annotate(
+                    label_text,
+                    xy=(x_val, y_val),
+                    xytext=(x_val + 0.05, y_val + offset_y),  # Offset text slightly
+                    textcoords='data',  # Use data coordinates for offset logic or 'offset points'
+                    arrowprops=dict(facecolor='red', arrowstyle='->', alpha=0.6),
+                    fontsize=8,
+                    color='darkred'
+                )
+
+            previous_failures = current_failures
+
         plt.xlabel(r"Global Strain $\epsilon_{xx}$ (%)", fontsize=12)
         plt.ylabel(r"Global Stress $\sigma_{xx}$ (MPa)", fontsize=12)
-        plt.grid(True, linestyle='--', alpha=0.7)
+        plt.grid(True, linestyle="--", alpha=0.7)
 
 
 # --- EXAMPLE USAGE IF RUN DIRECTLY ---
 if __name__ == "__main__":
     from classical_laminate_theory.structures import Laminate
-    from classical_laminate_theory.failuremodels import TsaiHill, Hashin, MaxStress, Puck
+    from classical_laminate_theory.failuremodels import (
+        TsaiHill,
+        Hashin,
+        MaxStress,
+        Puck,
+    )
 
     # 1. Setup Material
     E1, E2, G12, v12, t_ply = 140e9, 10e9, 5e9, 0.3, 0.15e-3
@@ -233,7 +295,7 @@ if __name__ == "__main__":
     direction = np.array([1.0, 0, 0, 0, 0, 0])  # Uniaxial Tension
     step_size = 1e3
 
-    plt.figure(figsize=(10, 7))
+    plt.figure(figsize=(12, 8))
     print(f"Comparing Failure Models on Layup: {layup_str}...\n")
 
     # 4. Run Loop
@@ -247,7 +309,11 @@ if __name__ == "__main__":
         sim.plot_curve(title_suffix=name)
 
     # 5. Finalize Plot
-    plt.title(f"Progressive Failure Analysis Comparison\nLayup: {layup_str}", fontsize=14, fontweight='bold')
+    plt.title(
+        f"Progressive Failure Analysis Comparison\nLayup: {layup_str}",
+        fontsize=14,
+        fontweight="bold",
+    )
     plt.legend(fontsize=11)
     plt.tight_layout()
     plt.show()

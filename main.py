@@ -1,6 +1,1 @@
-def main():
-    print("Hello from classical-laminate-theory!")
-
-
-if __name__ == "__main__":
-    main()
+from classical_laminate_theory.structures import Lamina, Laminate

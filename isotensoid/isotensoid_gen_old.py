@@ -4,8 +4,8 @@ from scipy.integrate import solve_ivp
 from scipy.optimize import brentq
 import ezdxf
 
-
 # --- Classes ---
+
 
 class IsotensoidProfile:
     def __init__(self, R, r0, a=None):
@@ -14,7 +14,7 @@ class IsotensoidProfile:
         self.rho0 = self.r0 / self.R
 
         if a is None:
-            self.a = -self.rho0 ** 2
+            self.a = -self.rho0**2
         else:
             self.a = float(a)
 
@@ -22,24 +22,25 @@ class IsotensoidProfile:
             raise ValueError("Opening radius r0 must be smaller than equator radius R.")
 
     def _discriminant(self, rho):
-        is_toroidal = abs(self.a + self.rho0 ** 2) < 1e-9
+        is_toroidal = abs(self.a + self.rho0**2) < 1e-9
 
         if is_toroidal:
             if abs(rho - self.rho0) < 1e-9:
                 return 1e9
-            numerator = 1 - self.rho0 ** 2
-            denominator = rho ** 2 * (rho ** 2 - self.rho0 ** 2)
+            numerator = 1 - self.rho0**2
+            denominator = rho**2 * (rho**2 - self.rho0**2)
             fraction = numerator / denominator
         else:
-            numerator = (self.a + 1) ** 2 * (rho ** 2 - self.rho0 ** 2)
-            denominator = rho ** 2 * (self.a + rho ** 2) ** 2 * (1 - self.rho0 ** 2)
-            if denominator == 0: return 1e9
+            numerator = (self.a + 1) ** 2 * (rho**2 - self.rho0**2)
+            denominator = rho**2 * (self.a + rho**2) ** 2 * (1 - self.rho0**2)
+            if denominator == 0:
+                return 1e9
             fraction = numerator / denominator
 
         return fraction - 1.0
 
     def find_valid_start_rho(self):
-        if abs(self.a + self.rho0 ** 2) < 1e-9:
+        if abs(self.a + self.rho0**2) < 1e-9:
             return self.rho0
 
         try:
@@ -56,10 +57,13 @@ class IsotensoidProfile:
 
     def _ode_func(self, rho, z):
         discrim = self._discriminant(rho)
-        if discrim <= 0: return 0.0
+        if discrim <= 0:
+            return 0.0
         rho_prime = np.sqrt(discrim)
-        if rho_prime > 1e9: return 0.0
-        if rho_prime < 1e-6: return 1e6
+        if rho_prime > 1e9:
+            return 0.0
+        if rho_prime < 1e-6:
+            return 1e6
         return 1.0 / rho_prime
 
     def generate_profile(self, num_points=200):
@@ -69,8 +73,13 @@ class IsotensoidProfile:
         z0 = [0.0]
 
         sol = solve_ivp(
-            self._ode_func, t_span, z0,
-            method='RK45', rtol=1e-6, atol=1e-9, dense_output=True
+            self._ode_func,
+            t_span,
+            z0,
+            method="RK45",
+            rtol=1e-6,
+            atol=1e-9,
+            dense_output=True,
         )
 
         rho_smooth = np.linspace(rho_start, 1.0, num_points)
@@ -128,14 +137,16 @@ class PressureVessel:
     def plot_profile(self):
         z, r = self.generate_full_profile()
         plt.figure(figsize=(12, 5))
-        plt.plot(z, r, 'k-', linewidth=2, label='Vessel Wall')
-        plt.plot(z, -r, 'k-', linewidth=2)
-        plt.axhline(0, color='gray', linestyle='-.', alpha=0.5)
+        plt.plot(z, r, "k-", linewidth=2, label="Vessel Wall")
+        plt.plot(z, -r, "k-", linewidth=2)
+        plt.axhline(0, color="gray", linestyle="-.", alpha=0.5)
 
-        plt.title(f"Full Pressure Vessel Profile\nR={self.R}mm, L={self.L_cyl}mm, Wind Angle={self.winding_angle:.1f}°")
+        plt.title(
+            f"Full Pressure Vessel Profile\nR={self.R}mm, L={self.L_cyl}mm, Wind Angle={self.winding_angle:.1f}°"
+        )
         plt.xlabel("Axial Position z [mm]")
         plt.ylabel("Radial Position r [mm]")
-        plt.axis('equal')
+        plt.axis("equal")
         plt.grid(True, alpha=0.6)
         plt.legend()
         plt.show()
@@ -143,7 +154,8 @@ class PressureVessel:
 
 # --- Export Function ---
 
-def export_to_dxf(z_coords, r_coords, filename='vessel_profile.dxf'):
+
+def export_to_dxf(z_coords, r_coords, filename="vessel_profile.dxf"):
     """
     Exports profile adhering to strict restrictions:
     1. LWPOLYLINE with Plinegen flag (Bit 128)
@@ -151,7 +163,7 @@ def export_to_dxf(z_coords, r_coords, filename='vessel_profile.dxf'):
     3. Ensures strictly increasing X (Z) values (removes seam duplicates)
     4. No closing loop
     """
-    doc = ezdxf.new('R2010')
+    doc = ezdxf.new("R2010")
     msp = doc.modelspace()
 
     # 1. Clean Data (Remove duplicates at seams)
@@ -170,9 +182,7 @@ def export_to_dxf(z_coords, r_coords, filename='vessel_profile.dxf'):
 
     # 2. Create LWPOLYLINE (Open)
     polyline = msp.add_lwpolyline(
-        clean_points,
-        close=False,
-        dxfattribs={'layer': 'PROFILE', 'color': 1}
+        clean_points, close=False, dxfattribs={"layer": "PROFILE", "color": 1}
     )
 
     # 3. Set Plinegen Flag (Bit 128)

@@ -2,11 +2,13 @@ from abc import ABC, abstractmethod
 import numpy as np
 from enum import Enum, auto
 
+
 class FailureMode(Enum):
     """
     Enumeration of all possible composite failure modes.
     Used to signal exactly what broke so the PFA loop degrades the correct stiffness.
     """
+
     # Safe / No Failure
     SAFE = auto()
 
@@ -22,11 +24,13 @@ class FailureMode(Enum):
     # Generic / Combined (For Tsai-Hill)
     GENERAL_FAILURE = auto()
 
+
 class FailureModel(ABC):
     @abstractmethod
     def failure_check(self, local_stress, local_strain) -> list[FailureMode]:
         """Returns a list of FailureMode enums."""
         raise NotImplementedError
+
 
 class MaxStress(FailureModel):
     """
@@ -111,7 +115,8 @@ class Hashin(FailureModel):
         # 2. Fiber Compression (s1 < 0) -> Correct
         else:
             if (
-                    abs(s1) / self.Xc) ** 2 >= 1:  # Note: Hashin 1980 often ignores shear here, simple stress ratio is standard
+                abs(s1) / self.Xc
+            ) ** 2 >= 1:  # Note: Hashin 1980 often ignores shear here, simple stress ratio is standard
                 failures.append(FailureMode.FIBER_COMPRESSION)
 
         # 3. Matrix Tension (s2 >= 0) -> Correct
@@ -139,7 +144,9 @@ class Puck(FailureModel):
     Refactored to return FailureMode Enums for robust PFA integration.
     """
 
-    def __init__(self, Xt, Xc, Yt, Yc, S12, E1, v12, m_sigF=1.1, p12_plus=0.3, p12_minus=0.2):
+    def __init__(
+        self, Xt, Xc, Yt, Yc, S12, E1, v12, m_sigF=1.1, p12_plus=0.3, p12_minus=0.2
+    ):
         self.Xt = Xt
         self.Xc = Xc
         self.Yt = Yt
@@ -196,10 +203,10 @@ class Puck(FailureModel):
             # --- IFF Mode A (Tension) ---
             # Maps to MATRIX_TENSION
             coeff = 1 - self.p12_plus * (self.Yt / self.S)
-            term_shear = (t12 / self.S)
-            term_stress = (s2 / self.Yt)
+            term_shear = t12 / self.S
+            term_stress = s2 / self.Yt
 
-            root = np.sqrt(term_shear ** 2 + coeff ** 2 * term_stress ** 2)
+            root = np.sqrt(term_shear**2 + coeff**2 * term_stress**2)
             fi_a = root + self.p12_plus * (s2 / self.S) + weakening
 
             if fi_a >= 1:
@@ -215,7 +222,7 @@ class Puck(FailureModel):
 
             if 0 <= ratio_sigma_tau <= turning_point:
                 # Mode B
-                root = np.sqrt(t12 ** 2 + (self.p12_minus * s2) ** 2)
+                root = np.sqrt(t12**2 + (self.p12_minus * s2) ** 2)
                 fi_b = (1 / self.S) * (root + self.p12_minus * s2) + weakening
                 if fi_b >= 1:
                     failures.append(FailureMode.MATRIX_COMPRESSION)
@@ -228,5 +235,6 @@ class Puck(FailureModel):
                     failures.append(FailureMode.MATRIX_COMPRESSION)
 
         return failures
+
 
 # PUCK, HASHIN, CHRISTENSEN, LARC05

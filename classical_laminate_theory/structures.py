@@ -10,6 +10,8 @@ class Lamina:
     A single composite ply.
     Uses @property for stiffness matrices to support Progressive Failure Analysis (PFA).
     When E1/E2 degrade, Qmat and Qbarmat update automatically.
+
+    Angle in degrees
     """
 
     def __init__(
@@ -47,9 +49,9 @@ class Lamina:
         m, n = self.m, self.n
         return np.array(
             [
-                [m ** 2, n ** 2, m * n],  # mn instead of 2mn
-                [n ** 2, m ** 2, -m * n],  # -mn instead of -2mn
-                [-2 * m * n, 2 * m * n, m ** 2 - n ** 2],  # 2mn factor here is critical
+                [m**2, n**2, m * n],  # mn instead of 2mn
+                [n**2, m**2, -m * n],  # -mn instead of -2mn
+                [-2 * m * n, 2 * m * n, m**2 - n**2],  # 2mn factor here is critical
             ]
         )
 
@@ -141,8 +143,12 @@ class Laminate:
         # Cached list of ply stiffnesses (refreshed in update_stiffness)
         self.Qbar_matrices = None
         # Transformation matrices (Static)
-        self.T_stress_matrices = np.array([ply.global_local_transform for ply in self.plies])
-        self.T_strain_matrices = np.array([ply.global_local_strain_transform for ply in self.plies])
+        self.T_stress_matrices = np.array(
+            [ply.global_local_transform for ply in self.plies]
+        )
+        self.T_strain_matrices = np.array(
+            [ply.global_local_strain_transform for ply in self.plies]
+        )
 
         # ABD Matrices
         self.A = np.zeros((3, 3))
@@ -165,15 +171,15 @@ class Laminate:
 
     @classmethod
     def from_layup(
-            cls,
-            layup_string: str,
-            E1: float,
-            E2: float,
-            G12: float,
-            v12: float,
-            t: float,
-            failure_model: FailureModel,
-            load=None
+        cls,
+        layup_string: str,
+        E1: float,
+        E2: float,
+        G12: float,
+        v12: float,
+        t: float,
+        failure_model: FailureModel,
+        load=None,
     ):
         """
         Factory method to create a Laminate from a string and uniform material properties.
@@ -200,15 +206,17 @@ class Laminate:
         plies = []
         for angle in angles:
             # Create identical material for every angle
-            plies.append(Lamina(
-                angle=angle,
-                E1=E1,
-                E2=E2,
-                G12=G12,
-                v12=v12,
-                t=t,
-                failure_model=failure_model
-            ))
+            plies.append(
+                Lamina(
+                    angle=angle,
+                    E1=E1,
+                    E2=E2,
+                    G12=G12,
+                    v12=v12,
+                    t=t,
+                    failure_model=failure_model,
+                )
+            )
 
         # Return new instance of class (Laminate)
         return cls(tuple(plies), load)
@@ -467,4 +475,3 @@ class Laminate:
             [r"$\varepsilon_{11}$", r"$\varepsilon_{22}$", r"$\gamma_{12}$"],
             "Local Strain Distribution in the Laminate",
         )
-
