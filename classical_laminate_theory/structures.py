@@ -5,40 +5,84 @@ import seaborn as sns
 from classical_laminate_theory.failuremodels import FailureModel
 
 
+class Material:
+    """
+    Container for orthotropic material properties (Stiffness + Strength).
+    """
+    def __init__(self, E1, E2, G12, v12, Xt=0, Xc=0, Yt=0, Yc=0, S12=0, name="Generic Material", **kwargs):
+        self.name = name
+        self.E1 = E1
+        self.E2 = E2
+        self.G12 = G12
+        self.v12 = v12
+        self.Xt = Xt
+        self.Xc = Xc
+        self.Yt = Yt
+        self.Yc = Yc
+        self.S12 = S12
+        # Store extra kwargs (like thickness 't') if provided
+        self.extra = kwargs
+
 class Lamina:
     """
     A single composite ply.
-    Uses @property for stiffness matrices to support Progressive Failure Analysis (PFA).
-    When E1/E2 degrade, Qmat and Qbarmat update automatically.
-
-    Angle in degrees
     """
 
     def __init__(
         self,
         angle: float,
-        E1: float,
-        E2: float,
-        G12: float,
-        v12: float,
-        t: float,
-        failure_model: FailureModel,
+        material: Material,
+        t: float = None,
+        failure_model: FailureModel = None,
     ):
-        # 1. Material Inputs (State variables that might change in PFA)
-        self.E1 = E1
-        self.E2 = E2
-        self.G12 = G12
-        self.v12 = v12
-        self.t = t
+        # 1. Material Inputs (Initial values stored for CDM)
+        self.material = material
+        self.E1_init = material.E1
+        self.E2_init = material.E2
+        self.G12_init = material.G12
+        self.v12_init = material.v12
+        
+        # Priority for thickness: Arg > Material extra > Default
+        self.t = t if t is not None else material.extra.get('t', 0.15e-3)
         self.failure_model = failure_model
 
-        # 2. Geometric Inputs (assumed static for PFA)
+        # 2. Damage Factors
+        self.d1 = 1.0
+        self.d2 = 1.0
+        self.d66 = 1.0
+        self.dv12 = 1.0
+
+        # 3. Geometric Inputs
         self.angle = np.radians(angle)
         self.m = np.cos(self.angle)
         self.n = np.sin(self.angle)
 
-        # 3. State Flags
+        # 4. State Flags
         self.failed = False
+
+    def reset_damage(self):
+        """Restore ply to its pristine state."""
+        self.d1 = 1.0
+        self.d2 = 1.0
+        self.d66 = 1.0
+        self.dv12 = 1.0
+        self.failed = False
+
+    @property
+    def E1(self):
+        return self.E1_init * self.d1
+
+    @property
+    def E2(self):
+        return self.E2_init * self.d2
+
+    @property
+    def G12(self):
+        return self.G12_init * self.d66
+
+    @property
+    def v12(self):
+        return self.v12_init * self.dv12
 
     @property
     def global_local_strain_transform(self):
@@ -173,52 +217,47 @@ class Laminate:
     def from_layup(
         cls,
         layup_string: str,
-        E1: float,
-        E2: float,
-        G12: float,
-        v12: float,
-        t: float,
-        failure_model: FailureModel,
+        material: Material = None,
+        failure_model: FailureModel = None,
+        E1: float = None,
+        E2: float = None,
+        G12: float = None,
+        v12: float = None,
+        t: float = None,
         load=None,
     ):
         """
-        Factory method to create a Laminate from a string and uniform material properties.
-
-        Args:
-            layup_string: e.g. "[0/90]_s" or "[0, 45, -45, 90]_2s"
-            E1, E2, G12, v12: Elastic constants
-            t: Ply thickness
-            failure_model: Instance of FailureModel (Hashin, TsaiHill, etc.)
-            load: Optional initial load vector (1x6)
-
-        Returns:
-            Laminate instance
+        Factory method to create a Laminate from a string.
+        
+        Supports legacy individual parameters or new Material/FailureModel synergy.
+        If failure_model is provided and has a .material attribute, it will be used.
         """
-        # Local import to prevent circular dependency with helpers.py
         from .helpers import parse_layup_string
+
+        # 1. Resolve Material
+        if material is None:
+            if failure_model and hasattr(failure_model, 'material'):
+                material = failure_model.material
+            else:
+                # Create ad-hoc material from individual components
+                material = Material(E1=E1, E2=E2, G12=G12, v12=v12, t=t)
 
         if load is None:
             load = np.zeros(6)
 
-        # Get list of angles (e.g., [0, 90, 90, 0])
         angles = parse_layup_string(layup_string)
 
         plies = []
         for angle in angles:
-            # Create identical material for every angle
             plies.append(
                 Lamina(
                     angle=angle,
-                    E1=E1,
-                    E2=E2,
-                    G12=G12,
-                    v12=v12,
+                    material=material,
                     t=t,
                     failure_model=failure_model,
                 )
             )
 
-        # Return new instance of class (Laminate)
         return cls(tuple(plies), load)
 
     def get_z_positions(self):
@@ -299,6 +338,13 @@ class Laminate:
     def apply_load(self, load):
         """Update load and re-solve stresses without full stiffness rebuild."""
         self.load = load
+        self.get_stress_strain()
+
+    def reset_damage(self):
+        """Restore all plies to pristine state and recalculate stiffness."""
+        for ply in self.plies:
+            ply.reset_damage()
+        self.update_stiffness()
         self.get_stress_strain()
 
     # (Keep your _plot_distribution, global_stress_graph, etc. methods here)

@@ -9,9 +9,9 @@ def parse_layup_string(layup: str):
     Parses a composite layup string into a flat tuple of ply angles.
 
     Improvements over original:
+
     1. Supports '/' as a delimiter (e.g., "[0/90]_s").
-    2. Corrects symmetry logic: "_2s" now means "Repeat 2x then Mirror" (Standard)
-       instead of "Mirror then Repeat 2x".
+    2. Corrects symmetry logic: "_2s" now means "Repeat 2x then Mirror" (Standard) instead of "Mirror then Repeat 2x".
     3. Better error reporting.
     """
     s = layup.replace(" ", "")  # remove whitespace
@@ -109,10 +109,16 @@ def parse_layup_string(layup: str):
                 is_symmetric = True
                 i += 1
 
-        # Apply Logic: Repeat first, then Mirror (Standard Convention)
-        result = group_plies * count
+        # Apply Logic:
+        # If just _n, repeat the group n times.
+        # If _ns, the 'n' refers to how many times to apply the symmetry operation.
+        # e.g., _2s means [[group]_s]_s
+        result = group_plies
         if is_symmetric:
-            result = result + result[::-1]
+            for _ in range(count):
+                result = result + result[::-1]
+        else:
+            result = result * count
 
         return result, i
 
