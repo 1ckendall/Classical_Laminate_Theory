@@ -20,11 +20,11 @@ class IsotensoidProfile:
         Generates an isotensoid pressure vessel profile (single or double ended).
 
         Args:
-            R: Equator radius (mm)
-            r0: Opening/Boss radius (mm)
+            R: Equator radius (m)
+            r0: Opening/Boss radius (m)
             a: Dimensionless load parameter.
                If None, defaults to -rho0^2 (Toroidal/Open-ended condition).
-            cylinder_length: Length of the cylindrical section (mm).
+            cylinder_length: Length of the cylindrical section (m).
             num_domes: 1 for single-ended (cylinder + dome), 2 for double-ended (dome + cylinder + dome).
         """
         self.R = float(R)
@@ -217,7 +217,7 @@ class IsotensoidProfile:
             color="r",
             linestyle=":",
             alpha=0.5,
-            label=f"Opening $r_0$ ({self.r0}mm)",
+            label=f"Opening $r_0$ ({self.r0}m)",
         )
         plt.axhline(-self.r0, color="r", linestyle=":", alpha=0.5)
 
@@ -231,10 +231,10 @@ class IsotensoidProfile:
         # 3. Annotations
         plt.title(
             f"Isotensoid Vessel: {self.condition_type}\n"
-            f"D={2 * self.R}mm, L_cyl={self.L_cyl}mm, Config={self.num_domes} Dome(s)"
+            f"D={2 * self.R:.3f}m, L_cyl={self.L_cyl:.3f}m, Config={self.num_domes} Dome(s)"
         )
-        plt.xlabel("Axial Position z [mm]")
-        plt.ylabel("Radial Position r [mm]")
+        plt.xlabel("Axial Position z [m]")
+        plt.ylabel("Radial Position r [m]")
         plt.axis("equal")
         plt.grid(True, which="both", alpha=0.6)
         plt.legend(loc="lower right")
@@ -260,6 +260,8 @@ class IsotensoidProfile:
             self.generate_profile()
 
         doc = ezdxf.new("R2010")
+        # Set INSUNITS to meters (13)
+        doc.header["$INSUNITS"] = 13
         msp = doc.modelspace()
 
         # Clean Data (Remove duplicates at seams) for Polyline
@@ -269,7 +271,7 @@ class IsotensoidProfile:
             # Explicit float cast to avoid ezdxf numpy issues
             clean_points.append((float(self.z_coords[0]), float(self.r_coords[0])))
 
-            epsilon_z = 1e-6
+            epsilon_z = 1e-9
             for i in range(1, len(self.z_coords)):
                 z_curr = float(self.z_coords[i])
                 r_curr = float(self.r_coords[i])
@@ -319,18 +321,18 @@ class IsotensoidProfile:
         if self.z_coords is None:
             self.generate_profile()
 
-        # Geometry Bounds
+        # Geometry Bounds (m)
         z_min, z_max = np.min(self.z_coords), np.max(self.z_coords)
         r_max = np.max(self.r_coords)
 
-        # Physical Geometry Size
-        geo_width = z_max - z_min
-        geo_height = 2 * r_max
+        # Physical Geometry Size (mm)
+        geo_width_mm = (z_max - z_min) * 1000
+        geo_height_mm = 2 * r_max * 1000
 
         # Margins (mm)
         margin = 20.0
-        total_width_mm = geo_width + (2 * margin)
-        total_height_mm = geo_height + (2 * margin)
+        total_width_mm = geo_width_mm + (2 * margin)
+        total_height_mm = geo_height_mm + (2 * margin)
 
         # Create Figure
         fig_width_in = total_width_mm / 25.4
@@ -339,28 +341,28 @@ class IsotensoidProfile:
 
         ax = fig.add_axes([0, 0, 1, 1])
 
-        # Plot Geometry
-        ax.plot(self.z_coords, self.r_coords, "k-", linewidth=0.8)
-        ax.plot(self.z_coords, -self.r_coords, "k-", linewidth=0.8)
+        # Plot Geometry (Scale to mm)
+        ax.plot(self.z_coords * 1000, self.r_coords * 1000, "k-", linewidth=0.8)
+        ax.plot(self.z_coords * 1000, -self.r_coords * 1000, "k-", linewidth=0.8)
 
-        # Centerline
-        ax.plot([z_min, z_max], [0, 0], "k-.", linewidth=0.3)
+        # Centerline (mm)
+        ax.plot([z_min * 1000, z_max * 1000], [0, 0], "k-.", linewidth=0.3)
 
         # Opening Lines (Vertical)
         if self.num_domes == 2:
-            ax.plot([z_min, z_min], [self.r0, -self.r0], "k-", linewidth=0.5)
+            ax.plot([z_min * 1000, z_min * 1000], [self.r0 * 1000, -self.r0 * 1000], "k-", linewidth=0.5)
         else:
-            ax.plot([z_min, z_min], [self.R, -self.R], "k-", linewidth=0.5)
+            ax.plot([z_min * 1000, z_min * 1000], [self.R * 1000, -self.R * 1000], "k-", linewidth=0.5)
 
-        ax.plot([z_max, z_max], [self.r0, -self.r0], "k-", linewidth=0.5)
+        ax.plot([z_max * 1000, z_max * 1000], [self.r0 * 1000, -self.r0 * 1000], "k-", linewidth=0.5)
 
-        # Calibration Square
-        center_z = (z_min + z_max) / 2
-        limit_left = center_z - (total_width_mm / 2)
-        limit_bottom = 0.0 - (total_height_mm / 2)
+        # Calibration Square (mm)
+        center_z_mm = (z_min + z_max) / 2 * 1000
+        limit_left_mm = center_z_mm - (total_width_mm / 2)
+        limit_bottom_mm = 0.0 - (total_height_mm / 2)
 
-        rect_x = limit_left + 5
-        rect_y = limit_bottom + 5
+        rect_x = limit_left_mm + 5
+        rect_y = limit_bottom_mm + 5
         rect = Rectangle(
             (rect_x, rect_y), 10, 10, linewidth=1, edgecolor="r", facecolor="none"
         )
@@ -369,8 +371,8 @@ class IsotensoidProfile:
             rect_x + 12, rect_y + 2, "10mm Scale", color="red", fontsize=8, va="center"
         )
 
-        # Set Limits
-        ax.set_xlim(center_z - total_width_mm / 2, center_z + total_width_mm / 2)
+        # Set Limits (mm)
+        ax.set_xlim(center_z_mm - total_width_mm / 2, center_z_mm + total_width_mm / 2)
         ax.set_ylim(-total_height_mm / 2, total_height_mm / 2)
 
         ax.set_aspect("equal")
@@ -386,10 +388,10 @@ class IsotensoidProfile:
 
 # --- Main Execution Block ---
 if __name__ == "__main__":
-    # Example Parameters (mm)
-    DIAMETER = 120.0
-    BOSS_DIAMETER = 80.0
-    CYL_LENGTH = 100.0
+    # Example Parameters (meters)
+    DIAMETER = 0.120
+    BOSS_DIAMETER = 0.080
+    CYL_LENGTH = 0.100
 
     # 1. Initialize
     iso = IsotensoidProfile(
@@ -400,15 +402,15 @@ if __name__ == "__main__":
     )
 
     print(f"--- Pressure Vessel Parameters ---")
-    print(f"Equator R: {iso.R} mm")
-    print(f"Opening r0: {iso.r0} mm")
+    print(f"Equator R: {iso.R} m")
+    print(f"Opening r0: {iso.r0} m")
     print(f"Winding Angle: {iso.winding_angle_deg:.2f} degrees")
     print(f"Load Param a: {iso.a:.5f}")
 
     # 2. Generate Data
     z, r = iso.generate_profile(num_points=300)
     print(f"Profile generated with {len(z)} points.")
-    print(f"Total Length: {np.max(z) - np.min(z):.2f} mm")
+    print(f"Total Length: {np.max(z) - np.min(z):.2f} m")
 
     # 3. Plot
     iso.plot_profile()

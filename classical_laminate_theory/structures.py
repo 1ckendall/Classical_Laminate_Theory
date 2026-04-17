@@ -169,14 +169,14 @@ class Laminate:
     def __init__(
         self,
         plies: tuple[Lamina, ...],
-        load=np.array([0, 0, 0, 0, 0, 0]),
+        load=None,
     ):
         """
         Composite laminate class supporting Progressive Failure.
         All attributes are explicitly defined here to satisfy linters.
         """
         self.plies = plies
-        self.load = load
+        self.load = np.zeros(6) if load is None else np.asarray(load)
         self.n_plies = len(plies)
 
         # --- 1. Geometry Attributes (Defined before calculation) ---
@@ -203,6 +203,8 @@ class Laminate:
 
         # --- 3. Stress/Strain Attributes (Initialized to Zero) ---
         # Shape: (n_plies, 3)
+        self.midplane_strains = np.zeros(3)
+        self.curvatures = np.zeros(3)
         self.global_strains = np.zeros((self.n_plies, 3))
         self.global_stresses = np.zeros((self.n_plies, 3))
         self.local_strains = np.zeros((self.n_plies, 3))
@@ -309,14 +311,16 @@ class Laminate:
 
     def get_stress_strain(self):
         """Compute stresses based on current Load and Stiffness."""
-        midplane_deformation = np.linalg.solve(self.ABD, self.load)
+        # Use the pre-computed inverse (self.abd is zeros when ABD is singular,
+        # giving zero strain/stress as a safe post-failure state).
+        midplane_deformation = self.abd @ self.load
 
-        midplane_strains = midplane_deformation[:3]
-        curvatures = midplane_deformation[3:]
+        self.midplane_strains = midplane_deformation[:3]
+        self.curvatures = midplane_deformation[3:]
 
         # Global Strains: epsilon_z = epsilon_0 + z * kappa
         self.global_strains = (
-            midplane_strains + self.lamina_midplanes[:, None] * curvatures
+            self.midplane_strains + self.lamina_midplanes[:, None] * self.curvatures
         )
 
         # Global Stresses: sigma = Qbar * epsilon
@@ -486,8 +490,7 @@ class Laminate:
         fig.suptitle(title, fontweight="bold")
         plt.show()
 
-    @property
-    def global_stress_graph(self):
+    def plot_global_stress(self):
         """Plot stress distribution through laminate thickness."""
         return self._plot_distribution(
             self.global_stresses * 1e-6,
@@ -495,8 +498,7 @@ class Laminate:
             "Global Stress Distribution in the Laminate",
         )
 
-    @property
-    def global_strain_graph(self):
+    def plot_global_strain(self):
         """Plot strain distribution through laminate thickness."""
         return self._plot_distribution(
             self.global_strains,
@@ -504,8 +506,7 @@ class Laminate:
             "Global Strain Distribution in the Laminate",
         )
 
-    @property
-    def local_stress_graph(self):
+    def plot_local_stress(self):
         """Plot stress distribution through laminate thickness."""
         return self._plot_distribution(
             self.local_stresses * 1e-6,
@@ -513,8 +514,7 @@ class Laminate:
             "Local Stress Distribution in the Laminate",
         )
 
-    @property
-    def local_strain_graph(self):
+    def plot_local_strain(self):
         """Plot strain distribution through laminate thickness."""
         return self._plot_distribution(
             self.local_strains,

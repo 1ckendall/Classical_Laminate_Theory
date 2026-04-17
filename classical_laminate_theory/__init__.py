@@ -1,4 +1,4 @@
-from .structures import Lamina, Laminate
+from .structures import Lamina, Laminate, Material
 from .failuremodels import (
     FailureMode,
     FailureModel,
@@ -14,6 +14,7 @@ from .helpers import parse_layup_string
 __all__ = [
     "Lamina",
     "Laminate",
+    "Material",
     "FailureMode",
     "FailureModel",
     "MaxStress",

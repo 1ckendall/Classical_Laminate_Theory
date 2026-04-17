@@ -125,7 +125,7 @@ class ProgressiveFailureAnalysis:
         sigma_x = current_load[0] / t
 
         self.history["load_factor"].append(current_load[0])
-        self.history["strain"].append(self.laminate.global_strains[0, 0])
+        self.history["strain"].append(self.laminate.midplane_strains[0])
         self.history["stress"].append(sigma_x)
         self.history["damage_state"].append(len(self.failed_plies))
         self.history["failed_plies_details"].append(sorted(list(self.failed_plies)))
@@ -229,18 +229,20 @@ class ProgressiveFailureAnalysis:
 
 
 def main():
-    from classical_laminate_theory.structures import Laminate
+    from classical_laminate_theory.structures import Laminate, Material
     from classical_laminate_theory.failuremodels import TsaiHill, Hashin, MaxStress, Puck
 
     E1, E2, G12, v12, t_ply = 140e9, 10e9, 5e9, 0.3, 0.15e-3
     Xt, Xc, Yt, Yc, S12 = 2500e6, 2000e6, 50e6, 150e6, 80e6
     layup_str = "[0/90/45/-45]_s"
 
+    mat = Material(E1=E1, E2=E2, G12=G12, v12=v12, Xt=Xt, Xc=Xc, Yt=Yt, Yc=Yc, S12=S12, t=t_ply)
+
     models = {
-        "Max Stress": MaxStress(Xt, Xc, Yt, Yc, S12),
-        "Tsai-Hill": TsaiHill(X11=Xt, X22=Yt, S12=S12),
-        "Hashin": Hashin(Xt, Xc, Yt, Yc, S12),
-        "Puck": Puck(Xt, Xc, Yt, Yc, S12, E1=E1, v12=v12)
+        "Max Stress": MaxStress(material=mat),
+        "Tsai-Hill": TsaiHill(material=mat),
+        "Hashin": Hashin(material=mat),
+        "Puck": Puck(material=mat),
     }
 
     direction = np.array([1.0, 0, 0, 0, 0, 0])
@@ -248,7 +250,7 @@ def main():
 
     plt.figure(figsize=(12, 8))
     for name, model in models.items():
-        lam = Laminate.from_layup(layup_str, E1, E2, G12, v12, t_ply, model)
+        lam = Laminate.from_layup(layup_str, material=mat, failure_model=model)
         sim = ProgressiveFailureAnalysis(lam)
         sim.run_until_failure(direction, step_size=step_size, max_steps=3000)
         sim.plot_curve(title_suffix=name)

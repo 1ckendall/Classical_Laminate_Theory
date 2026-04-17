@@ -48,7 +48,7 @@ def parse_layup_string(layup: str):
         if not token:
             return [], i
 
-            # Handle ply-level repetition (e.g., 90_2)
+        # Handle ply-level repetition (e.g., 90_2)
         if "_" in token:
             parts = token.split("_")
             if len(parts) != 2:
@@ -111,14 +111,13 @@ def parse_layup_string(layup: str):
 
         # Apply Logic:
         # If just _n, repeat the group n times.
-        # If _ns, the 'n' refers to how many times to apply the symmetry operation.
-        # e.g., _2s means [[group]_s]_s
-        result = group_plies
+        # If _ns, repeat the group n times then mirror once.
+        # e.g., [0/90]_2s -> [0,90,0,90] then mirror -> [0,90,0,90,90,0,90,0]
         if is_symmetric:
-            for _ in range(count):
-                result = result + result[::-1]
+            repeated = group_plies * count
+            result = repeated + repeated[::-1]
         else:
-            result = result * count
+            result = group_plies * count
 
         return result, i
 

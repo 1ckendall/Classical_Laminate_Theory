@@ -48,11 +48,11 @@ class MaxStress(FailureModel):
 
     def __init__(self, Xt=0, Xc=0, Yt=0, Yc=0, S12=0, material=None):
         super().__init__(material)
-        self.Xt = Xt or (material.Xt if material else 0)
-        self.Xc = Xc or (material.Xc if material else 0)
-        self.Yt = Yt or (material.Yt if material else 0)
-        self.Yc = Yc or (material.Yc if material else 0)
-        self.S12 = S12 or (material.S12 if material else 0)
+        self.Xt = Xt if Xt != 0 else (material.Xt if material else 0)
+        self.Xc = Xc if Xc != 0 else (material.Xc if material else 0)
+        self.Yt = Yt if Yt != 0 else (material.Yt if material else 0)
+        self.Yc = Yc if Yc != 0 else (material.Yc if material else 0)
+        self.S12 = S12 if S12 != 0 else (material.S12 if material else 0)
 
     def failure_check(self, local_stress, local_strain):
         s1, s2, t12 = local_stress
@@ -91,11 +91,13 @@ class MaxStress(FailureModel):
 
 
 class TsaiHill(FailureModel):
-    def __init__(self, X11=0, X22=0, S12=0, material=None):
+    def __init__(self, Xt=0, Xc=0, Yt=0, Yc=0, S12=0, material=None):
         super().__init__(material)
-        self.X11 = X11 or (material.Xt if material else 0)
-        self.X22 = X22 or (material.Yt if material else 0)
-        self.S12 = S12 or (material.S12 if material else 0)
+        self.Xt = Xt if Xt != 0 else (material.Xt if material else 0)
+        self.Xc = Xc if Xc != 0 else (material.Xc if material else 0)
+        self.Yt = Yt if Yt != 0 else (material.Yt if material else 0)
+        self.Yc = Yc if Yc != 0 else (material.Yc if material else 0)
+        self.S12 = S12 if S12 != 0 else (material.S12 if material else 0)
 
     def failure_check(self, local_stress, local_strain):
         if self.get_effort(local_stress, local_strain) >= 1:
@@ -104,10 +106,13 @@ class TsaiHill(FailureModel):
 
     def get_effort(self, local_stress, local_strain):
         s1, s2, t12 = local_stress
+        # Use tension or compression strength depending on stress sign
+        X1 = self.Xt if s1 >= 0 else self.Xc
+        X2 = self.Yt if s2 >= 0 else self.Yc
         return (
-            (s1 / self.X11) ** 2
-            - (s1 * s2) / (self.X11**2)
-            + (s2 / self.X22) ** 2
+            (s1 / X1) ** 2
+            - (s1 * s2) / (X1 ** 2)
+            + (s2 / X2) ** 2
             + (t12 / self.S12) ** 2
         )
 
@@ -120,11 +125,11 @@ class Hashin(FailureModel):
 
     def __init__(self, Xt=0, Xc=0, Yt=0, Yc=0, S12=0, material=None):
         super().__init__(material)
-        self.Xt = Xt or (material.Xt if material else 0)
-        self.Xc = Xc or (material.Xc if material else 0)
-        self.Yt = Yt or (material.Yt if material else 0)
-        self.Yc = Yc or (material.Yc if material else 0)
-        self.S12 = S12 or (material.S12 if material else 0)
+        self.Xt = Xt if Xt != 0 else (material.Xt if material else 0)
+        self.Xc = Xc if Xc != 0 else (material.Xc if material else 0)
+        self.Yt = Yt if Yt != 0 else (material.Yt if material else 0)
+        self.Yc = Yc if Yc != 0 else (material.Yc if material else 0)
+        self.S12 = S12 if S12 != 0 else (material.S12 if material else 0)
 
     def failure_check(self, local_stress, local_strain):
         s1, s2, t12 = local_stress
@@ -196,13 +201,13 @@ class Puck(FailureModel):
     ):
         super().__init__(material)
         # Pull from material if provided, otherwise use args
-        self.Xt = Xt or (material.Xt if material else 0)
-        self.Xc = Xc or (material.Xc if material else 0)
-        self.Yt = Yt or (material.Yt if material else 0)
-        self.Yc = Yc or (material.Yc if material else 0)
-        self.S = S12 or (material.S12 if material else 0)
-        self.E1 = E1 or (material.E1 if material else 0)
-        self.v12 = v12 or (material.v12 if material else 0)
+        self.Xt = Xt if Xt != 0 else (material.Xt if material else 0)
+        self.Xc = Xc if Xc != 0 else (material.Xc if material else 0)
+        self.Yt = Yt if Yt != 0 else (material.Yt if material else 0)
+        self.Yc = Yc if Yc != 0 else (material.Yc if material else 0)
+        self.S = S12 if S12 != 0 else (material.S12 if material else 0)
+        self.E1 = E1 if E1 != 0 else (material.E1 if material else 0)
+        self.v12 = v12 if v12 != 0 else (material.v12 if material else 0)
 
         self.m_sigF = m_sigF
         self.p12_plus = p12_plus

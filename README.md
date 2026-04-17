@@ -1,6 +1,6 @@
 # Classical Laminate Theory & Progressive Failure Toolkit
 
-A high-fidelity Python toolkit for the analysis of composite materials. This project implements Classical Laminate Theory (CLT) and Progressive Failure Analysis (PFA) using state-of-the-art failure criteria and non-destructive material degradation models.
+A Python toolkit for the analysis of composite materials. This project implements Classical Laminate Theory (CLT) and Progressive Failure Analysis (PFA) using various failure criteria and material degradation models.
 
 ## Key Features
 
